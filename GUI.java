@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.io.*;
 import java.awt.image.*;
 import javax.imageio.*;
 import java.awt.BorderLayout;
