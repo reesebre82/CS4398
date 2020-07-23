@@ -1,9 +1,8 @@
 
-public abstract class EmployeeModel implements Model {
+public abstract class EmployeeModel {
   private String firstName;
   private String lastName;
   private int phoneNumber;
-  private double salary;
 
   // private _ scheduleRestrictions;
   // private _ mySchedule; // Schedule class not implemented yet
@@ -19,9 +18,6 @@ public abstract class EmployeeModel implements Model {
   public void setPhoneNumber(int phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
-
-  public void setSalary(int salary){
-    this.salary = salary; }
 
   // void setScheduleRestrictions(){}
   // void getMySchedule(){};
