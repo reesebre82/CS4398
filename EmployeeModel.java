@@ -34,7 +34,7 @@ public abstract class EmployeeModel {
     this.startDate[1] = sDate[1];
     this.startDate[2] = sDate[2]; }
   
-  public int[3] setStartDate(){
+  public int[3] getStartDate(){
     return startDate[3]; }
 
 }
