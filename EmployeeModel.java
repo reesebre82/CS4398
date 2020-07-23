@@ -10,22 +10,31 @@ public abstract class EmployeeModel {
   
   public void setFirstName(String firstName){
     this.firstName = firstName; }
+  
+  public String getFirstName(){
+    return firstName; }
 
   public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+    this.lastName = lastName; }
+  
+  public String getLastName(){
+    return lastName; }
 
   public void setPhoneNumber(int phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
-  // void setScheduleRestrictions(){}
-  // void getMySchedule(){};
-
-  public void setStartDate(int startDate[3]){
-    this.startDate[0] = startDate[0];
-    this.startDate[1] = startDate[1];
-    this.startDate[2] = startDate[2]; 
-    }
+    this.phoneNumber = phoneNumber; }
   
+  public int getPhoneNumber(){
+    return phoneNumber; }
+
+  // void setScheduleRestrictions(){} //Waiting on Schedule model to be implemented
+  // void getMySchedule(){}; //Waiting on Schedule model to be implemented
+
+  public void setStartDate(int sDate[3]){
+    this.startDate[0] = sDate[0];
+    this.startDate[1] = sDate[1];
+    this.startDate[2] = sDate[2]; }
+  
+  public int[3] setStartDate(){
+    return startDate[3]; }
+
 }
