@@ -35,6 +35,6 @@ public abstract class EmployeeModel {
     this.startDate[2] = sDate[2]; }
   
   public int[] getStartDate(){
-    return startDate[3]; }
+    return startDate; }
 
 }
