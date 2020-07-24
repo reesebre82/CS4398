@@ -6,8 +6,5 @@ public class VetApp {
         // gui.addBackground();
         // gui.addButtons();
 
-        // DatabaseManager dm = new DatabaseManager();
-
-        // DatabaseTester.getEID();
     }
 }
