@@ -1,4 +1,4 @@
 
-public class VetModel extends EmployeeModel {
+public class VetModel extends PersonModel {
   // Needs to be implemented
 }
