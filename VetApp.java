@@ -4,9 +4,5 @@ public class VetApp {
         // GUI gui = new GUI();
         // gui.addBackground();
         // gui.addButtons();
-
-        // DatabaseManager dm = new DatabaseManager();
-
-        DatabaseTester.getEID();
     }
 }
