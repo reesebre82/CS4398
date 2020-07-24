@@ -1,3 +1,5 @@
+package API;
+
 public abstract class PersonModel {
     protected String firstName;
     protected String lastName;

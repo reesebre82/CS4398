@@ -1,3 +1,5 @@
+package API;
+
 public class Employee extends PersonModel {
     private int employeeID;
 
@@ -5,7 +7,7 @@ public class Employee extends PersonModel {
     // private _ mySchedule; // Schedule class not implemented yet
     private int startDate[];
 
-    Employee() {
+    public Employee() {
         startDate = new int[3];
         firstName = "";
         lastName = "";
@@ -13,7 +15,7 @@ public class Employee extends PersonModel {
         employeeID = -1;
     }
 
-    Employee(String firstName, String lastName, String phoneNumber) {
+    public Employee(String firstName, String lastName, String phoneNumber) {
         startDate = new int[3];
         this.firstName = firstName;
         this.lastName = lastName;

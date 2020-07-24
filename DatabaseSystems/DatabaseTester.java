@@ -1,7 +1,10 @@
+package DatabaseSystems;
+
+import API.*;
 
 public class DatabaseTester {
 
-    static void testUserAdditionWithEmployee() {
+    public static void testUserAdditionWithEmployee() {
         Employee eModel = new Employee();
         eModel.setFirstName("Melanie");
         eModel.setEmployeeID(16);
@@ -11,7 +14,7 @@ public class DatabaseTester {
         DatabaseManager.AddEmployee(eModel);
     }
 
-    static void getEID() {
+    public static void getEID() {
         System.out.println(DatabaseManager.getIncrementalEID());
     }
 }

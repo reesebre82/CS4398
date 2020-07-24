@@ -1,3 +1,6 @@
+package DatabaseSystems;
+
+import API.*;
 
 import java.sql.*;
 
@@ -6,7 +9,7 @@ public class DatabaseManager {
     private static String UUID = "F7i.2OPy$9.)=";
     private static String deviceID = "fhfwtd6ujd8m";
 
-    static int getIncrementalEID() {
+    public static int getIncrementalEID() {
         try {
             String query = "SELECT * FROM Employee ORDER BY EID DESC LIMIT 1";
 
@@ -26,7 +29,7 @@ public class DatabaseManager {
         return -1;
     }
 
-    static void AddEmployee(Employee employee) {
+    public static void AddEmployee(Employee employee) {
         try {
             String prepareStatement = "insert into Employee (EID, FirstName, LastName, PhoneNumber) values (?, ?, ?, ?)";
 
@@ -45,7 +48,7 @@ public class DatabaseManager {
         }
     }
 
-    static void PrintEmployees() {
+    public static void PrintEmployees() {
         try {
             String query = "select * from Employee";
 
