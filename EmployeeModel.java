@@ -26,20 +26,20 @@ public abstract class EmployeeModel {
     this.firstName = firstName;
   }
 
-  public String getFirstName() {
-    return firstName;
-  }
-
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
-  public String getLastName() {
-    return lastName;
-  }
-
   public void setPhoneNumber(int phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
   }
 
   public int getPhoneNumber() {
