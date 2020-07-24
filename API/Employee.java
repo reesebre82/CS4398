@@ -37,4 +37,13 @@ public class Employee extends PersonModel {
     public void setStartDate(int[] startDate) {
         this.startDate = startDate;
     }
+
+    public String toString() {
+        String str = "";
+        str += Integer.toString(employeeID) + " ";
+        str += firstName + " ";
+        str += lastName + " ";
+        str += phoneNumber + " ";
+        return str;
+    }
 }
