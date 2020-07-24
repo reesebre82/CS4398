@@ -6,7 +6,7 @@ public class VetApp {
         // gui.addButtons();
 
         // DatabaseManager dm = new DatabaseManager();
-        DatabaseManager.AddEmployee();
-        DatabaseManager.PrintEmployees();
+
+        DatabaseTester.getEID();
     }
 }
