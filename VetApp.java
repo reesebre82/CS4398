@@ -1,11 +1,12 @@
-import javax.xml.crypto.Data;
 
 public class VetApp {
     public static void main(String[] args) {
-        GUI gui = new GUI();
-        gui.addBackground();
+        // GUI gui = new GUI();
+        // gui.addBackground();
         // gui.addButtons();
 
-        DatabaseManager dm = new DatabaseManager();
+        // DatabaseManager dm = new DatabaseManager();
+        DatabaseManager.AddEmployee();
+        DatabaseManager.PrintEmployees();
     }
 }
