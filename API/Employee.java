@@ -5,10 +5,10 @@ public class Employee extends PersonModel {
 
     // private _ scheduleRestrictions;
     // private _ mySchedule; // Schedule class not implemented yet
-    private int startDate[];
+    private String startDate;
 
     public Employee() {
-        startDate = new int[3];
+        startDate = "1900-01-01";
         firstName = "";
         lastName = "";
         phoneNumber = "(000)000-0000";
@@ -16,7 +16,7 @@ public class Employee extends PersonModel {
     }
 
     public Employee(String firstName, String lastName, String phoneNumber) {
-        startDate = new int[3];
+        startDate = "1900-01-01";
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -26,7 +26,7 @@ public class Employee extends PersonModel {
         return employeeID;
     }
 
-    public int[] getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
@@ -34,7 +34,7 @@ public class Employee extends PersonModel {
         this.employeeID = employeeID;
     }
 
-    public void setStartDate(int[] startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
