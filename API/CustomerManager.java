@@ -1,15 +1,15 @@
 package API;
 
 import java.util.ArrayList;
-//import DatabaseSystems.*;
+import DatabaseSystems.*;
 
 public class CustomerManager {
     ArrayList<Customer> customers;
 
     public CustomerManager() {
-        customers = new ArrayList<Customer>();// DatabaseManager.getCustomersFromDatabase();
+        customers = DatabaseManager.getCustomersFromDatabase();
 
-        ArrayList<Pet> pets = new ArrayList<Pet>();// DatabaseManager.getPetsFromDatabase();
+        ArrayList<Pet> pets = DatabaseManager.getPetsFromDatabase();
 
         for (Pet pet : pets) {
             for (Customer customer : customers) {
@@ -47,14 +47,15 @@ public class CustomerManager {
                 updatedCustomer.setCustomerID(customerID);
                 customers.remove(customer);
                 customers.add(updatedCustomer);
-                // DatabaseManager.updateCustomer(updatedCustomer);
+                DatabaseManager.updateCustomer(updatedCustomer);
+
             }
         }
     }
 
     public void closeDatabase() {
         for (Customer customer : customers) {
-            // DatabaseManager.updateCustomer(customer);
+            DatabaseManager.updateCustomer(customer);
         }
     }
 }
