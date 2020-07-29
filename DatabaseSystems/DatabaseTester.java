@@ -61,4 +61,37 @@ public class DatabaseTester {
     public static void testPrintPets() {
         DatabaseManager.PrintPets();
     }
+
+    public static void testUpdateEmployee() {
+        Employee eModel = new Employee();
+        eModel.setFirstName("George");
+        eModel.setLastName("smith");
+        eModel.setPhoneNumber("(888)888-8888");
+        eModel.setEmployeeID(3);
+
+        DatabaseManager.updateEmployee(eModel);
+    }
+
+    public static void testUpdateCustomer() {
+        Customer customer = new Customer();
+        customer.setFirstName("George");
+        customer.setLastName("smith");
+        customer.setPhoneNumber("(888)888-8888");
+        customer.setCustomerID(3);
+
+        DatabaseManager.updateCustomer(customer);
+    }
+
+    public static void testUpdatePet() {
+        Pet pet = new Pet();
+        pet.setPetID(2);
+        pet.setCustomerID(2);
+        pet.setName("Kitten");
+        pet.setSpecies("Dog");
+        pet.setBreed("Dalmation");
+        pet.setBirthday("1999-01-19");
+        pet.setGender("Female");
+
+        DatabaseManager.updatePet(pet);
+    }
 }

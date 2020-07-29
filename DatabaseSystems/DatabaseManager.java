@@ -63,6 +63,32 @@ public class DatabaseManager {
     }
 
     /**
+     * GetIncrementalPID will get and return the next available PetID from the
+     * database.
+     * 
+     * @return int
+     */
+    public static int getIncrementalPID() {
+        try {
+            String query = "SELECT * FROM Pets ORDER BY EID DESC LIMIT 1";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            Statement statement = conn.createStatement();
+
+            ResultSet rSet = statement.executeQuery(query);
+
+            while (rSet.next()) {
+                return rSet.getInt("PID") + 1;
+            }
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
+
+    /**
      * addEmployee will create a query to create a new employee and send it to the
      * database
      * 
@@ -236,6 +262,82 @@ public class DatabaseManager {
             e.printStackTrace();
         }
         return pets;
+    }
+
+    public static void updateEmployee(Employee employee) {
+        try {
+            String prepareStatement = "UPDATE Employee ";
+            prepareStatement += "Set ";
+            prepareStatement += "FirstName = ?, ";
+            prepareStatement += "LastName = ?, ";
+            prepareStatement += "PhoneNumber = ? ";
+            prepareStatement += "WHERE EID = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setString(1, employee.getFirstName());
+            statement.setString(2, employee.getLastName());
+            statement.setString(3, employee.getPhoneNumber());
+            statement.setInt(4, employee.getEmployeeID());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateCustomer(Customer customer) {
+        try {
+            String prepareStatement = "UPDATE Customer ";
+            prepareStatement += "Set ";
+            prepareStatement += "FirstName = ?, ";
+            prepareStatement += "LastName = ?, ";
+            prepareStatement += "PhoneNumber = ? ";
+            prepareStatement += "WHERE CID = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setString(1, customer.getFirstName());
+            statement.setString(2, customer.getLastName());
+            statement.setString(3, customer.getPhoneNumber());
+            statement.setInt(4, customer.getCustomerID());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updatePet(Pet pet) {
+        try {
+            String prepareStatement = "UPDATE Pets ";
+            prepareStatement += "Set ";
+            prepareStatement += "Name = ?, ";
+            prepareStatement += "Species = ?, ";
+            prepareStatement += "Breed = ?, ";
+            prepareStatement += "Birthday = ?, ";
+            prepareStatement += "Gender = ? ";
+            prepareStatement += "WHERE PID = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setString(1, pet.getName());
+            statement.setString(2, pet.getSpecies());
+            statement.setString(3, pet.getBreed());
+            statement.setString(4, pet.getBirthday());
+            statement.setString(5, pet.getGender());
+            statement.setInt(6, pet.getPetID());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
