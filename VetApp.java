@@ -1,6 +1,6 @@
-import com.mysql.cj.conf.PropertyDefinitions.DatabaseTerm;
 
-import DatabaseSystems.DatabaseTester;
+import DatabaseSystems.*;
+import GUI.*;
 
 public class VetApp {
     public static void main(String[] args) {
@@ -8,7 +8,8 @@ public class VetApp {
         // gui.addBackground();
         // gui.addButtons();
 
-        // DatabaseTester.testUserAdditionWithEmployee();
-        DatabaseTester.testUserAdditionWithCustomer();
+        DatabaseTester.testUserAdditionWithPet();
+        DatabaseTester.testPrintPets();
+        // DatabaseTester.testUserAdditionWithCustomer();
     }
 }
