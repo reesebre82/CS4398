@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import DatabaseSystems.*;
 
 public class CustomerManager {
-    ArrayList<Customer> customers;
+    private ArrayList<Customer> customers;
 
     public CustomerManager() {
         customers = DatabaseManager.getCustomersFromDatabase();
@@ -19,6 +19,11 @@ public class CustomerManager {
         }
     }
 
+    public void addCustomer(Customer customer) {
+        customer.setCustomerID(DatabaseManager.addCustomer(customer));
+        customers.add(customer);
+    }
+
     public Customer getCustomer(String firstName, String lastName) {
         for (Customer customer : customers)
             if (firstName.equals(customer.getFirstName()) && lastName.equals(customer.getLastName()))
@@ -27,7 +32,7 @@ public class CustomerManager {
         Customer customer = new Customer();
         customer.setFirstName("ERROR");
         customer.setLastName("ERROR");
-        return new Customer();
+        return customer;
     }
 
     public Customer getCustomer(int customerID) {
@@ -38,7 +43,7 @@ public class CustomerManager {
         Customer customer = new Customer();
         customer.setFirstName("ERROR");
         customer.setLastName("ERROR");
-        return new Customer();
+        return customer;
     }
 
     public void updateCustomer(int customerID, Customer updatedCustomer) {
@@ -56,11 +61,13 @@ public class CustomerManager {
     public void closeDatabase() {
         for (Customer customer : customers) {
             DatabaseManager.updateCustomer(customer);
+            for (Pet pet : customer.getPets())
+                DatabaseManager.updatePet(pet);
         }
     }
 
     public String toString() {
-        String str = "";
+        String str = "Customer Data:\n";
         int index = 1;
         for (Customer customer : customers) {
             str += index + ".\n\t";
@@ -92,7 +99,7 @@ public class CustomerManager {
                     petIndex++;
                 }
             }
-            str += "\n";
+            str += "\n\n";
             index++;
         }
         return str;
