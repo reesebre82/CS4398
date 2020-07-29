@@ -1,4 +1,5 @@
 
+import API.CustomerManager;
 import DatabaseSystems.*;
 import GUI.*;
 
@@ -8,6 +9,8 @@ public class VetApp {
         // gui.addBackground();
         // gui.addButtons();
 
-        DatabaseTester.testUpdatePet();
+        CustomerManager cm = new CustomerManager();
+
+        System.out.println(cm);
     }
 }
