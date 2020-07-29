@@ -93,39 +93,47 @@ public class DatabaseManager {
      * database
      * 
      * @param employee
+     * @return EID
      */
-    public static void addEmployee(Employee employee) {
+    public static int addEmployee(Employee employee) {
         try {
             String prepareStatement = "insert into Employee (EID, FirstName, LastName, PhoneNumber) values (?, ?, ?, ?)";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
 
-            statement.setInt(1, DatabaseManager.getIncrementalEID());
+            int incrementalEID = DatabaseManager.getIncrementalEID();
+
+            statement.setInt(1, incrementalEID);
             statement.setString(2, employee.getFirstName());
             statement.setString(3, employee.getLastName());
             statement.setString(4, employee.getPhoneNumber());
 
             statement.executeUpdate();
 
+            return incrementalEID;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
     /**
      * addPet will create a query to create a new pet and send it to the database
      * 
      * @param pet
+     * @return PID
      */
-    public static void addPet(Pet pet) {
+    public static int addPet(Pet pet) {
         try {
             String prepareStatement = "insert into Pets (PID, CID, Name, Species, Breed, Birthday, Gender) values (?, ?, ?, ?, ?, ?, ?)";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
 
-            statement.setInt(1, DatabaseManager.getIncrementalPID());
+            int incrementalPID = DatabaseManager.getIncrementalPID();
+
+            statement.setInt(1, incrementalPID);
             statement.setInt(2, pet.getCustomerID());
             statement.setString(3, pet.getName());
             statement.setString(4, pet.getSpecies());
@@ -135,9 +143,12 @@ public class DatabaseManager {
 
             statement.executeUpdate();
 
+            return incrementalPID;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
     /**
@@ -145,24 +156,29 @@ public class DatabaseManager {
      * database
      * 
      * @param customer
+     * @return CID
      */
-    public static void addCustomer(Customer customer) {
+    public static int addCustomer(Customer customer) {
         try {
             String prepareStatement = "insert into Customer (CID, FirstName, LastName,PhoneNumber) values (?, ?, ?, ?)";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
 
-            statement.setInt(1, DatabaseManager.getIncrementalCID());
+            int incrementalCID = DatabaseManager.getIncrementalCID();
+
+            statement.setInt(1, incrementalCID);
             statement.setString(2, customer.getFirstName());
             statement.setString(3, customer.getLastName());
             statement.setString(4, customer.getPhoneNumber());
 
             statement.executeUpdate();
 
+            return incrementalCID;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
     /**
