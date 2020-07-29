@@ -8,8 +8,6 @@ public class VetApp {
         // gui.addBackground();
         // gui.addButtons();
 
-        DatabaseTester.testUserAdditionWithPet();
-        DatabaseTester.testPrintPets();
-        // DatabaseTester.testUserAdditionWithCustomer();
+        DatabaseTester.testUpdatePet();
     }
 }
