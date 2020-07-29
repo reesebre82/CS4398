@@ -17,8 +17,9 @@ public class DatabaseManager {
      * @return int
      */
     public static int getIncrementalEID() {
+        int max = 1;
         try {
-            String query = "SELECT * FROM Employee ORDER BY EID DESC LIMIT 1";
+            String query = "SELECT * FROM Employee";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             Statement statement = conn.createStatement();
@@ -26,14 +27,13 @@ public class DatabaseManager {
             ResultSet rSet = statement.executeQuery(query);
 
             while (rSet.next()) {
-                return rSet.getInt("EID") + 1;
+                max = Math.max(rSet.getInt("EID"), max);
             }
-            return 1;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return -1;
+        return max + 1;
     }
 
     /**
@@ -43,6 +43,7 @@ public class DatabaseManager {
      * @return int
      */
     public static int getIncrementalCID() {
+        int max = 1;
         try {
             String query = "SELECT * FROM Customer ORDER BY CID DESC LIMIT 1";
 
@@ -52,14 +53,13 @@ public class DatabaseManager {
             ResultSet rSet = statement.executeQuery(query);
 
             while (rSet.next()) {
-                return rSet.getInt("CID") + 1;
+                max = Math.max(rSet.getInt("CID"), max);
             }
-            return 1;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return -1;
+        return max + 1;
     }
 
     /**
@@ -69,6 +69,7 @@ public class DatabaseManager {
      * @return int
      */
     public static int getIncrementalPID() {
+        int max = 1;
         try {
             String query = "SELECT * FROM Pets ORDER BY EID DESC LIMIT 1";
 
@@ -78,14 +79,13 @@ public class DatabaseManager {
             ResultSet rSet = statement.executeQuery(query);
 
             while (rSet.next()) {
-                return rSet.getInt("PID") + 1;
+                max = Math.max(rSet.getInt("EID"), max);
             }
-            return 1;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return -1;
+        return max + 1;
     }
 
     /**
@@ -264,6 +264,11 @@ public class DatabaseManager {
         return pets;
     }
 
+    /**
+     * updateEmployee will update a employee record in the database
+     * 
+     * @param employee
+     */
     public static void updateEmployee(Employee employee) {
         try {
             String prepareStatement = "UPDATE Employee ";
@@ -288,6 +293,11 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * updateCustomer will update a customer record in the database
+     * 
+     * @param customer
+     */
     public static void updateCustomer(Customer customer) {
         try {
             String prepareStatement = "UPDATE Customer ";
@@ -312,6 +322,11 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * updatePet will update a Pet record in the database
+     * 
+     * @param pet
+     */
     public static void updatePet(Pet pet) {
         try {
             String prepareStatement = "UPDATE Pets ";
