@@ -58,4 +58,43 @@ public class CustomerManager {
             DatabaseManager.updateCustomer(customer);
         }
     }
+
+    public String toString() {
+        String str = "";
+        int index = 1;
+        for (Customer customer : customers) {
+            str += index + ".\n\t";
+            str += "CID: ";
+            str += customer.getCustomerID() + "\n\t";
+            str += "First Name: ";
+            str += customer.getFirstName() + "\n\t";
+            str += "Last Name: ";
+            str += customer.getLastName() + "\n\t";
+            str += "Phone Number: ";
+            str += customer.getPhoneNumber() + "\n\t";
+            if (customer.getPets().size() != 0) {
+                str += "Pets:" + "\n\t" + "  ";
+                char petIndex = 'a';
+                for (Pet pet : customer.getPets()) {
+                    str += petIndex + "." + "\n\t\t";
+                    str += "PID: ";
+                    str += pet.getPetID() + "\n\t\t";
+                    str += "Name: ";
+                    str += pet.getName() + "\n\t\t";
+                    str += "Species: ";
+                    str += pet.getSpecies() + "\n\t\t";
+                    str += "Breed: ";
+                    str += pet.getBreed() + "\n\t\t";
+                    str += "Birthday: ";
+                    str += pet.getBirthday() + "\n\t\t";
+                    str += "Gender: ";
+                    str += pet.getGender() + "\n\t" + "  ";
+                    petIndex++;
+                }
+            }
+            str += "\n";
+            index++;
+        }
+        return str;
+    }
 }
