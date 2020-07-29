@@ -16,7 +16,7 @@ public class DatabaseManager {
      * 
      * @return int
      */
-    public static int getIncrementalEID() {
+    static int getIncrementalEID() {
         int max = 1;
         try {
             String query = "SELECT * FROM Employee";
@@ -42,10 +42,10 @@ public class DatabaseManager {
      * 
      * @return int
      */
-    public static int getIncrementalCID() {
+    static int getIncrementalCID() {
         int max = 1;
         try {
-            String query = "SELECT * FROM Customer ORDER BY CID DESC LIMIT 1";
+            String query = "SELECT * FROM Customer";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             Statement statement = conn.createStatement();
@@ -68,10 +68,10 @@ public class DatabaseManager {
      * 
      * @return int
      */
-    public static int getIncrementalPID() {
+    static int getIncrementalPID() {
         int max = 1;
         try {
-            String query = "SELECT * FROM Pets ORDER BY EID DESC LIMIT 1";
+            String query = "SELECT * FROM Pets";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             Statement statement = conn.createStatement();
@@ -79,7 +79,7 @@ public class DatabaseManager {
             ResultSet rSet = statement.executeQuery(query);
 
             while (rSet.next()) {
-                max = Math.max(rSet.getInt("EID"), max);
+                max = Math.max(rSet.getInt("PID"), max);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,7 +125,7 @@ public class DatabaseManager {
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
 
-            statement.setInt(1, pet.getPetID());
+            statement.setInt(1, DatabaseManager.getIncrementalPID());
             statement.setInt(2, pet.getCustomerID());
             statement.setString(3, pet.getName());
             statement.setString(4, pet.getSpecies());
