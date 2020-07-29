@@ -46,8 +46,4 @@ public class Employee extends PersonModel {
         str += phoneNumber + " ";
         return str;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> brendan
