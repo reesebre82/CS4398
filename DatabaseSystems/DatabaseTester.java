@@ -8,9 +8,9 @@ public class DatabaseTester {
 
     public static void testUserAdditionWithEmployee() {
         Employee eModel = new Employee();
-        eModel.setFirstName("John");
-        eModel.setLastName("Murphy");
-        eModel.setPhoneNumber("(732)545-7591");
+        eModel.setFirstName("Joe");
+        eModel.setLastName("smith");
+        eModel.setPhoneNumber("(292)444-1213");
 
         DatabaseManager.addEmployee(eModel);
     }
@@ -22,6 +22,19 @@ public class DatabaseTester {
         customer.setPhoneNumber("(222)333-4444");
 
         DatabaseManager.addCustomer(customer);
+    }
+
+    public static void testUserAdditionWithPet() {
+        Pet pet = new Pet();
+        pet.setBirthday("1998-01-13");
+        pet.setBreed("Calico");
+        pet.setCustomerID(2);
+        pet.setGender("Male");
+        pet.setName("Brendan");
+        pet.setPetID(2);
+        pet.setSpecies("Cat");
+
+        DatabaseManager.addPet(pet);
     }
 
     public static void getEID() {
@@ -43,5 +56,9 @@ public class DatabaseTester {
         for (Customer customer : customers) {
             System.out.println(customer);
         }
+    }
+
+    public static void testPrintPets() {
+        DatabaseManager.PrintPets();
     }
 }

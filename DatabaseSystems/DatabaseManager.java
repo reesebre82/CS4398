@@ -88,6 +88,33 @@ public class DatabaseManager {
     }
 
     /**
+     * addPet will create a query to create a new pet and send it to the database
+     * 
+     * @param pet
+     */
+    public static void addPet(Pet pet) {
+        try {
+            String prepareStatement = "insert into Pets (PID, CID, Name, Species, Breed, Birthday, Gender) values (?, ?, ?, ?, ?, ?, ?)";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setInt(1, pet.getPetID());
+            statement.setInt(2, pet.getCustomerID());
+            statement.setString(3, pet.getName());
+            statement.setString(4, pet.getSpecies());
+            statement.setString(5, pet.getBreed());
+            statement.setString(6, pet.getBirthday());
+            statement.setString(7, pet.getGender());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * addCustomer will create a query to create a new customer and send it to the
      * database
      * 
@@ -177,6 +204,41 @@ public class DatabaseManager {
     }
 
     /**
+     * getPetsFromDatabase is a function that will read the data from the database
+     * and get all of the pets data to return
+     * 
+     * @return ArrayList<Pets>
+     */
+    public static ArrayList<Pet> getPetsFromDatabase() {
+        ArrayList<Pet> pets = new ArrayList<Pet>();
+        try {
+            String query = "select * from Pets";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            Statement statement = conn.createStatement();
+
+            ResultSet rSet = statement.executeQuery(query);
+
+            while (rSet.next()) {
+                Pet pet = new Pet();
+                pet.setBirthday(rSet.getString("Birthday"));
+                pet.setBreed(rSet.getString("Breed"));
+                pet.setCustomerID(rSet.getInt("CID"));
+                pet.setPetID(rSet.getInt("PID"));
+                pet.setName(rSet.getString("Name"));
+                pet.setGender(rSet.getString("Gender"));
+                pet.setSpecies(rSet.getString("Species"));
+
+                pets.add(pet);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pets;
+    }
+
+    /**
      * printEmployees will read the Employee data from the database and print all of
      * the employees
      */
@@ -236,6 +298,29 @@ public class DatabaseManager {
      * printPets will read the pets data from the database and print all of the pets
      */
     public static void PrintPets() {
+        try {
+            String query = "select * from Pets";
 
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            Statement statement = conn.createStatement();
+
+            ResultSet rSet = statement.executeQuery(query);
+
+            while (rSet.next()) {
+                Pet pet = new Pet();
+                pet.setBirthday(rSet.getString("Birthday"));
+                pet.setBreed(rSet.getString("Breed"));
+                pet.setCustomerID(rSet.getInt("CID"));
+                pet.setPetID(rSet.getInt("PID"));
+                pet.setName(rSet.getString("Name"));
+                pet.setGender(rSet.getString("Gender"));
+                pet.setSpecies(rSet.getString("Species"));
+
+                System.out.println(pet);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
