@@ -9,6 +9,7 @@ public class Customer extends PersonModel {
 
     public Customer() {
         super();
+        pets = new ArrayList<Pet>();
         customerID = -1;
     }
 
@@ -16,6 +17,7 @@ public class Customer extends PersonModel {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        pets = new ArrayList<Pet>();
         customerID = -1;
     }
 
@@ -32,6 +34,10 @@ public class Customer extends PersonModel {
 
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
+    }
+
+    public ArrayList<Pet> getPets() {
+        return pets;
     }
 
     public int getCustomerID() {
