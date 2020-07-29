@@ -1,8 +1,5 @@
 package API;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Pet {
 
     int petID;
