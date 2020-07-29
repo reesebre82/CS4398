@@ -1,22 +1,60 @@
 package API;
 
 import java.util.ArrayList;
+//import DatabaseSystems.*;
 
 public class CustomerManager {
     ArrayList<Customer> customers;
 
-    // public CustomerManager() Empty constructor that instantiates customers as
-    // empty arraylist or get data from database//brendan will implement this
+    public CustomerManager() {
+        customers = new ArrayList<Customer>();// DatabaseManager.getCustomersFromDatabase();
 
-    // Customer getCustomer(String firstName, String lastName) function that returns
-    // a customer with a given first and last name
+        ArrayList<Pet> pets = new ArrayList<Pet>();// DatabaseManager.getPetsFromDatabase();
 
-    // Customer getCustomer(int customerID) function that returns a customer with a
-    // given customer ID
+        for (Pet pet : pets) {
+            for (Customer customer : customers) {
+                if (customer.getCustomerID() == pet.getCustomerID())
+                    customer.addPet(pet);
+            }
+        }
+    }
 
-    // Void updateCustomer(int customerID, Customer updatedCustomer) where it will
-    // update the customer with the same customerID in customers(after completed,
-    // brendan will add a section to update database)
+    public Customer getCustomer(String firstName, String lastName) {
+        for (Customer customer : customers)
+            if (firstName.equals(customer.getFirstName()) && lastName.equals(customer.getLastName()))
+                return customer;
 
-    // deconstructor to push data to database //Brendan will implement this;
+        Customer customer = new Customer();
+        customer.setFirstName("ERROR");
+        customer.setLastName("ERROR");
+        return new Customer();
+    }
+
+    public Customer getCustomer(int customerID) {
+        for (Customer customer : customers)
+            if (customerID == customer.getCustomerID())
+                return customer;
+
+        Customer customer = new Customer();
+        customer.setFirstName("ERROR");
+        customer.setLastName("ERROR");
+        return new Customer();
+    }
+
+    public void updateCustomer(int customerID, Customer updatedCustomer) {
+        for (Customer customer : customers) {
+            if (customerID == customer.getCustomerID()) {
+                updatedCustomer.setCustomerID(customerID);
+                customers.remove(customer);
+                customers.add(updatedCustomer);
+                // DatabaseManager.updateCustomer(updatedCustomer);
+            }
+        }
+    }
+
+    public void closeDatabase() {
+        for (Customer customer : customers) {
+            // DatabaseManager.updateCustomer(customer);
+        }
+    }
 }

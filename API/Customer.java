@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Customer extends PersonModel {
 
-    ArrayList<Pet> pets;
-    int customerID;
+    private ArrayList<Pet> pets;
+    private int customerID;
 
     public Customer() {
         super();
@@ -17,6 +17,17 @@ public class Customer extends PersonModel {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         customerID = -1;
+    }
+
+    public void addPet(Pet pet) {
+        pets.add(pet);
+    }
+
+    public void removePet(int petID) {
+        for (Pet pet : pets) {
+            if (pet.petID == petID)
+                pets.remove(pet);
+        }
     }
 
     public void setCustomerID(int customerID) {
