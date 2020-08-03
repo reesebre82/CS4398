@@ -9,13 +9,15 @@ public class Pet {
     String breed;
     String birthday;
     String gender;
+    String comments;
 
     public Pet() {
         petID = customerID = -1;
-        name = species = breed = gender = birthday = "";
+        name = species = breed = gender = birthday = comments = "";
     }
 
-    public Pet(int petID, int customerID, String name, String species, String breed, String birthday, String gender) {
+    public Pet(int petID, int customerID, String name, String species, String breed, String birthday, String gender,
+            String comments) {
         this.petID = petID;
         this.customerID = customerID;
         this.name = name;
@@ -23,17 +25,25 @@ public class Pet {
         this.breed = breed;
         this.gender = gender;
         this.birthday = birthday;
+        this.comments = comments;
     }
 
     public String toString() {
         String str = "";
-        str += Integer.toString(petID) + " ";
-        str += Integer.toString(customerID) + " ";
-        str += name + " ";
-        str += species + " ";
-        str += breed + " ";
-        str += birthday + " ";
-        str += gender;
+        str += "PID: ";
+        str += petID + "\n\t\t";
+        str += "Name: ";
+        str += name + "\n\t\t";
+        str += "Species: ";
+        str += species + "\n\t\t";
+        str += "Breed: ";
+        str += breed + "\n\t\t";
+        str += "Birthday: ";
+        str += birthday + "\n\t\t";
+        str += "Gender: ";
+        str += gender + "\n\t\t";
+        str += "Comments: ";
+        str += comments + "\n\t" + "  ";
         return str;
     }
 
@@ -67,6 +77,10 @@ public class Pet {
         this.species = species;
     }
 
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
     public String getBirthday() {
         return birthday;
     }
@@ -93,6 +107,10 @@ public class Pet {
 
     public String getSpecies() {
         return species;
+    }
+
+    public String getComments() {
+        return comments;
     }
 
     /* End of Getters and Setters */
