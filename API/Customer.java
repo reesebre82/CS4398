@@ -26,10 +26,9 @@ public class Customer extends PersonModel {
     }
 
     public void removePet(int petID) {
-        for (Pet pet : pets) {
-            if (pet.petID == petID)
-                pets.remove(pet);
-        }
+        for (int i = 0; i < pets.size(); i++)
+            if (pets.get(i).petID == petID)
+                pets.remove(i);
     }
 
     public void setCustomerID(int customerID) {
@@ -46,10 +45,38 @@ public class Customer extends PersonModel {
 
     public String toString() {
         String str = "";
-        str += Integer.toString(customerID) + " ";
-        str += firstName + " ";
-        str += lastName + " ";
-        str += phoneNumber + " ";
+        str += "CID: ";
+        str += customerID + "\n\t";
+        str += "First Name: ";
+        str += firstName + "\n\t";
+        str += "Last Name: ";
+        str += lastName + "\n\t";
+        str += "Phone Number: ";
+        str += phoneNumber + "\n\t";
+
+        if (pets.size() != 0) {
+            str += "Pets:" + "\n\t" + "  ";
+            char petIndex = 'a';
+            for (Pet pet : pets) {
+                str += petIndex + "." + "\n\t\t";
+                str += "PID: ";
+                str += pet.getPetID() + "\n\t\t";
+                str += "Name: ";
+                str += pet.getName() + "\n\t\t";
+                str += "Species: ";
+                str += pet.getSpecies() + "\n\t\t";
+                str += "Breed: ";
+                str += pet.getBreed() + "\n\t\t";
+                str += "Birthday: ";
+                str += pet.getBirthday() + "\n\t\t";
+                str += "Gender: ";
+                str += pet.getGender() + "\n\t\t";
+                str += "Comments: ";
+                str += pet.getComments() + "\n\t" + "  ";
+                petIndex++;
+            }
+        }
+        str += "\n\n";
         return str;
     }
 }
