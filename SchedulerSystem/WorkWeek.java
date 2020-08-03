@@ -7,11 +7,10 @@ public class WorkWeek {
 
     private ArrayList<WorkDay> days;
     private String weekDayStrings[] = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    private ArrayList<Employee> employeesWorking;
 
     WorkWeek() {
         days = new ArrayList<WorkDay>();
-        employeesWorking = new ArrayList<Employee>();
+
         for (int i = 0; i < 7; i++) {
             WorkDay workDay = new WorkDay();
             workDay.dayOfWeek = weekDayStrings[i];
@@ -25,10 +24,6 @@ public class WorkWeek {
             }
             days.add(workDay);
         }
-    }
-
-    public void fillEmployees(ArrayList<Employee> employees) {
-        employeesWorking = employees;
     }
 
     private void fillDay(ArrayList<Employee> employees, int day) {
@@ -47,6 +42,20 @@ public class WorkWeek {
                     if (!found) {
                         lowestEmployeeIndex = i;
                         lowestEmployeeScheduled = employees.get(i).getScheduledHours();
+                    }
+                } else if (employees.get(i).getScheduledHours() == lowestEmployeeScheduled) {
+                    boolean found = false;
+                    for (Integer EID : ignoreID) {
+                        if (employees.get(i).getEmployeeID() == EID)
+                            found = true;
+                    }
+
+                    if (!found) {
+                        long check = Math.round(Math.random());
+                        if (check == 0) {
+                            lowestEmployeeIndex = i;
+                            lowestEmployeeScheduled = employees.get(i).getScheduledHours();
+                        }
                     }
                 }
             }
