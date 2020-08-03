@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import API.*;
 import DatabaseSystems.DatabaseManager;
-import GUI.*;
+// import GUI.*;
 import SchedulerSystem.*;
 
 public class VetApp {
@@ -16,9 +16,9 @@ public class VetApp {
 
         // GUI gui = new GUI();
 
-        Scheduler scheduler = new Scheduler();
-        ArrayList<Employee> employees = DatabaseManager.getEmployeesFromDatabase();
-        scheduler.PopulateWeek(employees);
+        // Scheduler scheduler = new Scheduler();
+        // ArrayList<Employee> employees = DatabaseManager.getEmployeesFromDatabase();
+        // scheduler.PopulateWeek(employees);
 
         System.out.println("ended");
     }
