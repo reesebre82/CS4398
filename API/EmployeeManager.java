@@ -59,19 +59,7 @@ public class EmployeeManager {
         int index = 1;
         for (Employee employee : employees) {
             str += index + ".\n\t";
-            str += "EID: ";
-            str += employee.getEmployeeID() + "\n\t";
-            str += "First Name: ";
-            str += employee.getFirstName() + "\n\t";
-            str += "Last Name: ";
-            str += employee.getLastName() + "\n\t";
-            str += "Phone Number: ";
-            str += employee.getPhoneNumber() + "\n\t";
-            str += "Start Date: ";
-            str += employee.getStartDate() + "\n\t";
-            str += "\n\n";
-
-            // Add information for when schedules are created
+            str += employee.toString();
             index++;
         }
         return str;
