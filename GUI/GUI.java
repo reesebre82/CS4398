@@ -13,11 +13,9 @@ public class GUI {
     private JFrame frame;
 
     public GUI() {
-        frame = new JFrame(gc);
-        frame.setSize(800, 600);
-        frame.setLocation(300, 200);
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frame = new JFrame(gc);
+        NewJFrame view = new NewJFrame();
+        view.setVisible(true);
     }
 
     public void addBackground() {
