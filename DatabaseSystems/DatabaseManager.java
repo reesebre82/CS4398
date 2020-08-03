@@ -97,7 +97,8 @@ public class DatabaseManager {
      */
     public static int addEmployee(Employee employee) {
         try {
-            String prepareStatement = "insert into Employee (EID, FirstName, LastName, PhoneNumber) values (?, ?, ?, ?)";
+            String prepareStatement = "insert into Employee (EID, FirstName, LastName, PhoneNumber, HoursWeekly, ScheduledHours, StartDate)";
+            prepareStatement += " values (?, ?, ?, ?, ?, ?,?)";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
@@ -108,6 +109,9 @@ public class DatabaseManager {
             statement.setString(2, employee.getFirstName());
             statement.setString(3, employee.getLastName());
             statement.setString(4, employee.getPhoneNumber());
+            statement.setInt(5, employee.getWeeklyHours());
+            statement.setInt(6, employee.getScheduledHours());
+            statement.setString(7, employee.getStartDate());
 
             statement.executeUpdate();
 
@@ -126,7 +130,7 @@ public class DatabaseManager {
      */
     public static int addPet(Pet pet) {
         try {
-            String prepareStatement = "insert into Pets (PID, CID, Name, Species, Breed, Birthday, Gender) values (?, ?, ?, ?, ?, ?, ?)";
+            String prepareStatement = "insert into Pets (PID, CID, Name, Species, Breed, Birthday, Gender, Comments) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
@@ -140,6 +144,7 @@ public class DatabaseManager {
             statement.setString(5, pet.getBreed());
             statement.setString(6, pet.getBirthday());
             statement.setString(7, pet.getGender());
+            statement.setString(8, pet.getComments());
 
             statement.executeUpdate();
 
@@ -203,6 +208,9 @@ public class DatabaseManager {
                 employee.setFirstName(rSet.getString("FirstName"));
                 employee.setLastName(rSet.getString("LastName"));
                 employee.setPhoneNumber(rSet.getString("PhoneNumber"));
+                employee.setWeeklyHours(rSet.getInt("HoursWeekly"));
+                employee.setScheduledHours(rSet.getInt("ScheduledHours"));
+                employee.setStartDate(rSet.getString("StartDate"));
 
                 employees.add(employee);
             }
@@ -270,6 +278,7 @@ public class DatabaseManager {
                 pet.setName(rSet.getString("Name"));
                 pet.setGender(rSet.getString("Gender"));
                 pet.setSpecies(rSet.getString("Species"));
+                pet.setComments(rSet.getString("Comments"));
 
                 pets.add(pet);
             }
@@ -291,7 +300,10 @@ public class DatabaseManager {
             prepareStatement += "Set ";
             prepareStatement += "FirstName = ?, ";
             prepareStatement += "LastName = ?, ";
-            prepareStatement += "PhoneNumber = ? ";
+            prepareStatement += "PhoneNumber = ?, ";
+            prepareStatement += "HoursWeekly = ?, ";
+            prepareStatement += "ScheduledHours = ?, ";
+            prepareStatement += "StartDate = ? ";
             prepareStatement += "WHERE EID = ?";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
@@ -300,7 +312,10 @@ public class DatabaseManager {
             statement.setString(1, employee.getFirstName());
             statement.setString(2, employee.getLastName());
             statement.setString(3, employee.getPhoneNumber());
-            statement.setInt(4, employee.getEmployeeID());
+            statement.setInt(4, employee.getWeeklyHours());
+            statement.setInt(5, employee.getScheduledHours());
+            statement.setString(6, employee.getStartDate());
+            statement.setInt(7, employee.getEmployeeID());
 
             statement.executeUpdate();
 
@@ -351,7 +366,8 @@ public class DatabaseManager {
             prepareStatement += "Species = ?, ";
             prepareStatement += "Breed = ?, ";
             prepareStatement += "Birthday = ?, ";
-            prepareStatement += "Gender = ? ";
+            prepareStatement += "Gender = ?, ";
+            prepareStatement += "Comments = ? ";
             prepareStatement += "WHERE PID = ?";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
@@ -362,7 +378,8 @@ public class DatabaseManager {
             statement.setString(3, pet.getBreed());
             statement.setString(4, pet.getBirthday());
             statement.setString(5, pet.getGender());
-            statement.setInt(6, pet.getPetID());
+            statement.setString(6, pet.getComments());
+            statement.setInt(7, pet.getPetID());
 
             statement.executeUpdate();
 
@@ -390,6 +407,9 @@ public class DatabaseManager {
                 employee.setFirstName(rSet.getString("FirstName"));
                 employee.setLastName(rSet.getString("LastName"));
                 employee.setPhoneNumber(rSet.getString("PhoneNumber"));
+                employee.setWeeklyHours(rSet.getInt("HoursWeekly"));
+                employee.setScheduledHours(rSet.getInt("ScheduledHours"));
+                employee.setStartDate(rSet.getString("StartDate"));
 
                 System.out.println(employee);
             }
@@ -448,6 +468,7 @@ public class DatabaseManager {
                 pet.setName(rSet.getString("Name"));
                 pet.setGender(rSet.getString("Gender"));
                 pet.setSpecies(rSet.getString("Species"));
+                pet.setComments(rSet.getString("Comments"));
 
                 System.out.println(pet);
             }
