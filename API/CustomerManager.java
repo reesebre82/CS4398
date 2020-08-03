@@ -29,6 +29,29 @@ public class CustomerManager {
         customer.addPet(pet);
     }
 
+    public void removePet(int PID, int CID) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getCustomerID() == CID) {
+                ArrayList<Pet> pets = customers.get(i).getPets();
+                for (int j = 0; j < pets.size(); j++) {
+                    if (pets.get(j).getPetID() == PID) {
+                        DatabaseManager.removePet(PID);
+                        customers.get(i).removePet(PID);
+                    }
+                }
+            }
+        }
+    }
+
+    public void removeCustomer(int CID) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getCustomerID() == CID) {
+                DatabaseManager.removeCustomer(CID);
+                customers.remove(i);
+            }
+        }
+    }
+
     public Customer getCustomer(String firstName, String lastName) {
         for (Customer customer : customers)
             if (firstName.equals(customer.getFirstName()) && lastName.equals(customer.getLastName()))

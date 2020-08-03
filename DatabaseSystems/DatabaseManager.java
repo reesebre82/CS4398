@@ -16,7 +16,7 @@ public class DatabaseManager {
      * 
      * @return int
      */
-    static int getIncrementalEID() {
+    protected static int getIncrementalEID() {
         int max = 1;
         try {
             String query = "SELECT * FROM Employee";
@@ -42,7 +42,7 @@ public class DatabaseManager {
      * 
      * @return int
      */
-    static int getIncrementalCID() {
+    protected static int getIncrementalCID() {
         int max = 1;
         try {
             String query = "SELECT * FROM Customer";
@@ -68,7 +68,7 @@ public class DatabaseManager {
      * 
      * @return int
      */
-    static int getIncrementalPID() {
+    protected static int getIncrementalPID() {
         int max = 1;
         try {
             String query = "SELECT * FROM Pets";
@@ -381,6 +381,54 @@ public class DatabaseManager {
             statement.setString(6, pet.getComments());
             statement.setInt(7, pet.getPetID());
 
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeEmployee(int EID) {
+        try {
+            String prepareStatement = "DELETE FROM Employee ";
+            prepareStatement += "WHERE id = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setInt(1, EID);
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeCustomer(int CID) {
+        try {
+            String prepareStatement = "DELETE FROM Customer ";
+            prepareStatement += "WHERE id = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setInt(1, CID);
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removePet(int PID) {
+        try {
+            String prepareStatement = "DELETE FROM Pets ";
+            prepareStatement += "WHERE id = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setInt(1, PID);
             statement.executeUpdate();
 
         } catch (Exception e) {

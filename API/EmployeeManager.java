@@ -16,6 +16,15 @@ public class EmployeeManager {
         employees.add(employee);
     }
 
+    public void removeEmployee(int EID) {
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getEmployeeID() == EID) {
+                DatabaseManager.removeEmployee(EID);
+                employees.remove(EID);
+            }
+        }
+    }
+
     public Employee getEmployee(String firstName, String lastName) {
         for (Employee employee : employees)
             if (firstName.equals(employee.getFirstName()) && lastName.equals(employee.getLastName()))
