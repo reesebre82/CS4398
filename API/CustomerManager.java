@@ -24,6 +24,11 @@ public class CustomerManager {
         customers.add(customer);
     }
 
+    public void addPetWithCustomerID(Pet pet, int customerID) {
+        Customer customer = getCustomer(customerID);
+        customer.addPet(pet);
+    }
+
     public Customer getCustomer(String firstName, String lastName) {
         for (Customer customer : customers)
             if (firstName.equals(customer.getFirstName()) && lastName.equals(customer.getLastName()))
@@ -47,13 +52,12 @@ public class CustomerManager {
     }
 
     public void updateCustomer(int customerID, Customer updatedCustomer) {
-        for (Customer customer : customers) {
-            if (customerID == customer.getCustomerID()) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customerID == customers.get(i).getCustomerID()) {
                 updatedCustomer.setCustomerID(customerID);
-                customers.remove(customer);
+                customers.remove(i);
                 customers.add(updatedCustomer);
                 DatabaseManager.updateCustomer(updatedCustomer);
-
             }
         }
     }
@@ -71,35 +75,7 @@ public class CustomerManager {
         int index = 1;
         for (Customer customer : customers) {
             str += index + ".\n\t";
-            str += "CID: ";
-            str += customer.getCustomerID() + "\n\t";
-            str += "First Name: ";
-            str += customer.getFirstName() + "\n\t";
-            str += "Last Name: ";
-            str += customer.getLastName() + "\n\t";
-            str += "Phone Number: ";
-            str += customer.getPhoneNumber() + "\n\t";
-            if (customer.getPets().size() != 0) {
-                str += "Pets:" + "\n\t" + "  ";
-                char petIndex = 'a';
-                for (Pet pet : customer.getPets()) {
-                    str += petIndex + "." + "\n\t\t";
-                    str += "PID: ";
-                    str += pet.getPetID() + "\n\t\t";
-                    str += "Name: ";
-                    str += pet.getName() + "\n\t\t";
-                    str += "Species: ";
-                    str += pet.getSpecies() + "\n\t\t";
-                    str += "Breed: ";
-                    str += pet.getBreed() + "\n\t\t";
-                    str += "Birthday: ";
-                    str += pet.getBirthday() + "\n\t\t";
-                    str += "Gender: ";
-                    str += pet.getGender() + "\n\t" + "  ";
-                    petIndex++;
-                }
-            }
-            str += "\n\n";
+            str += customer.toString();
             index++;
         }
         return str;
