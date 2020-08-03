@@ -391,7 +391,7 @@ public class DatabaseManager {
     public static void removeEmployee(int EID) {
         try {
             String prepareStatement = "DELETE FROM Employee ";
-            prepareStatement += "WHERE id = ?";
+            prepareStatement += "WHERE EID = ?";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
@@ -407,7 +407,7 @@ public class DatabaseManager {
     public static void removeCustomer(int CID) {
         try {
             String prepareStatement = "DELETE FROM Customer ";
-            prepareStatement += "WHERE id = ?";
+            prepareStatement += "WHERE CID = ?";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
@@ -423,7 +423,7 @@ public class DatabaseManager {
     public static void removePet(int PID) {
         try {
             String prepareStatement = "DELETE FROM Pets ";
-            prepareStatement += "WHERE id = ?";
+            prepareStatement += "WHERE PID = ?";
 
             Connection conn = DriverManager.getConnection(url, deviceID, UUID);
             PreparedStatement statement = conn.prepareStatement(prepareStatement);
