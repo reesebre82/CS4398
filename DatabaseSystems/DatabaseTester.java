@@ -94,4 +94,16 @@ public class DatabaseTester {
 
         DatabaseManager.updatePet(pet);
     }
+
+    public void testRemoveCustomer() {
+        Customer customer = new Customer();
+        customer.setFirstName("George");
+        customer.setLastName("smith");
+        customer.setPhoneNumber("(888)888-8888");
+        customer.setCustomerID(DatabaseManager.addCustomer(customer));
+
+        System.out.println("customer id: " + customer.getCustomerID());
+
+        DatabaseManager.removeCustomer(customer.getCustomerID());
+    }
 }
