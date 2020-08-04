@@ -388,6 +388,9 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * @param EID
+     */
     public static void removeEmployee(int EID) {
         try {
             String prepareStatement = "DELETE FROM Employee ";
@@ -404,6 +407,9 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * @param CID
+     */
     public static void removeCustomer(int CID) {
         try {
             String prepareStatement = "DELETE FROM Customer ";
@@ -420,6 +426,9 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * @param PID
+     */
     public static void removePet(int PID) {
         try {
             String prepareStatement = "DELETE FROM Pets ";

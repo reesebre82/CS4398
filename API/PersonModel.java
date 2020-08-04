@@ -8,7 +8,7 @@ public abstract class PersonModel {
     /**
      * setFirstName will update the first name.
      * 
-     * @param firstName
+     * @param firstName String to update firstName.
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -17,7 +17,7 @@ public abstract class PersonModel {
     /**
      * setLastName will update the last name.
      * 
-     * @param lastName
+     * @param lastName String to update LastName.
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -26,7 +26,7 @@ public abstract class PersonModel {
     /**
      * setPhoneNumber will update the phoneNumber.
      * 
-     * @param phoneNumber
+     * @param phoneNumber String to update phoneNumber.
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;

@@ -22,7 +22,7 @@ public class CustomerManager {
     /**
      * addCustomer adds a customer to the database and ArrayList
      * 
-     * @param customer
+     * @param customer Customer Customer to be added.
      */
     public void addCustomer(Customer customer) {
         customer.setCustomerID(DatabaseManager.addCustomer(customer));
@@ -32,8 +32,8 @@ public class CustomerManager {
     /**
      * addPetWithCustomerID will add a pet to the customer with the given customerID
      * 
-     * @param pet
-     * @param customerID
+     * @param pet        Pet Pet to be added.
+     * @param customerID Integer CID for customer to add the pet to.
      */
     public void addPetWithCustomerID(Pet pet, int customerID) {
         Customer customer = getCustomer(customerID);
@@ -44,8 +44,8 @@ public class CustomerManager {
      * removePet will remove a pet with the PetID from the customer with the
      * CustomerID CID
      * 
-     * @param PID
-     * @param CID
+     * @param PID Integer PID for pet to be removed.
+     * @param CID Integer CID for Customer who's pet will be removed.
      */
     public void removePet(int PID, int CID) {
         for (int i = 0; i < customers.size(); i++) {
@@ -64,7 +64,7 @@ public class CustomerManager {
     /**
      * removeCustomer will remove a customer with a given customerID
      * 
-     * @param CID
+     * @param CID Integer CID for customer to be removed.
      */
     public void removeCustomer(int CID) {
         for (int i = 0; i < customers.size(); i++) {
@@ -78,8 +78,8 @@ public class CustomerManager {
     /**
      * getCustomer will return a customer with a given first and last name
      * 
-     * @param firstName
-     * @param lastName
+     * @param firstName String first name for customer to be returned.
+     * @param lastName  String last name for customer to be returned.
      * @return Customer
      */
     public Customer getCustomer(String firstName, String lastName) {
@@ -96,7 +96,7 @@ public class CustomerManager {
     /**
      * getCustomer will return a customer with a given customerID
      * 
-     * @param customerID
+     * @param customerID Integer CID for customer to be returned.
      * @return Customer
      */
     public Customer getCustomer(int customerID) {
@@ -114,8 +114,9 @@ public class CustomerManager {
      * updateCustomer will update a customer in the ArrayList and then update it in
      * the database.
      * 
-     * @param customerID
-     * @param updatedCustomer
+     * @param customerID      Integer CID for customer to be updated.
+     * @param updatedCustomer Customer customer information to update customer with
+     *                        CID to.
      */
     public void updateCustomer(int customerID, Customer updatedCustomer) {
         for (int i = 0; i < customers.size(); i++) {

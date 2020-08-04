@@ -65,28 +65,28 @@ public class Employee extends PersonModel {
     }
 
     /**
-     * @param scheduledHours
+     * @param scheduledHours Integer to update ScheduledHours.
      */
     public void setScheduledHours(int scheduledHours) {
         this.scheduledHours = scheduledHours;
     }
 
     /**
-     * @param weeklyHours
+     * @param weeklyHours Integer to update WeeklyHours.
      */
     public void setWeeklyHours(int weeklyHours) {
         this.weeklyHours = weeklyHours;
     }
 
     /**
-     * @param employeeID
+     * @param employeeID Integer to update EmployeeID.
      */
     public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
     /**
-     * @param startDate
+     * @param startDate String to update startDate.
      */
     public void setStartDate(String startDate) {
         this.startDate = startDate;

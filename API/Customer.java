@@ -24,7 +24,7 @@ public class Customer extends PersonModel {
     /**
      * addPet adds a pet to the customer.
      * 
-     * @param pet
+     * @param pet Pet to be added.
      */
     public void addPet(Pet pet) {
         pets.add(pet);
@@ -33,7 +33,7 @@ public class Customer extends PersonModel {
     /**
      * removePet removes a pet from the customer.
      * 
-     * @param petID
+     * @param petID integer to set petID to.
      */
     public void removePet(int petID) {
         for (int i = 0; i < pets.size(); i++)
@@ -42,13 +42,17 @@ public class Customer extends PersonModel {
     }
 
     /**
-     * @param customerID
+     * setCustomerID will update the CID.
+     * 
+     * @param customerID integer to set CustomerID to.
      */
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
 
     /**
+     * getPets will return the pets for the customer.
+     * 
      * @return ArrayList<Pet>
      */
     public ArrayList<Pet> getPets() {
@@ -56,6 +60,8 @@ public class Customer extends PersonModel {
     }
 
     /**
+     * getCustomerID will return the CID.
+     * 
      * @return int
      */
     public int getCustomerID() {

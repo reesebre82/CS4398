@@ -14,7 +14,7 @@ public class EmployeeManager {
     /**
      * addEmployee will add an employee to the ArrayList and Database.
      * 
-     * @param employee
+     * @param employee Employee to add.
      */
     public void addEmployee(Employee employee) {
         employee.setEmployeeID(DatabaseManager.addEmployee(employee));
@@ -24,7 +24,7 @@ public class EmployeeManager {
     /**
      * removeEmployee will remove an employee from the ArrayList and the Database.
      * 
-     * @param EID
+     * @param EID Integer EmployeeID of Employee to be removed.
      */
     public void removeEmployee(int EID) {
         for (int i = 0; i < employees.size(); i++) {
@@ -38,8 +38,8 @@ public class EmployeeManager {
     /**
      * getEmployee will return an employee from a given first and last name.
      * 
-     * @param firstName
-     * @param lastName
+     * @param firstName String FirstName of employee to be returned.
+     * @param lastName  String LastName of employee to be returned.
      * @return Employee
      */
     public Employee getEmployee(String firstName, String lastName) {
@@ -56,7 +56,7 @@ public class EmployeeManager {
     /**
      * getCustomer will return a customer from a given EmployeeID.
      * 
-     * @param employeeID
+     * @param employeeID Integer EmployeeID to be returned.
      * @return Employee
      */
     public Employee getCustomer(int employeeID) {
@@ -74,8 +74,9 @@ public class EmployeeManager {
      * updateEmployee will update an employee in the ArrayList and Database with a
      * given EmployeeID.
      * 
-     * @param employeeID
-     * @param updatedEmployee
+     * @param employeeID      Integer EmployeeID of employee to be updated.
+     * @param updatedEmployee Employee updated information for employee to be
+     *                        updated.
      */
     public void updateEmployee(int employeeID, Employee updatedEmployee) {
         for (Employee employee : employees) {

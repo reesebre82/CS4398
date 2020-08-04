@@ -31,7 +31,7 @@ public class Pet {
     /**
      * setBirthday will update the birthday.
      * 
-     * @param birthday
+     * @param birthday String to update birthday.
      */
     /* Start of Getters and Setters */
 
@@ -42,7 +42,7 @@ public class Pet {
     /**
      * setBreed will update the breed.
      * 
-     * @param breed
+     * @param breed String to update breed.
      */
     public void setBreed(String breed) {
         this.breed = breed;
@@ -51,7 +51,7 @@ public class Pet {
     /**
      * setCustomerID will update the CustomerID.
      * 
-     * @param customerID
+     * @param customerID Integer to update CustomerID.
      */
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
@@ -60,7 +60,7 @@ public class Pet {
     /**
      * setName will update the name.
      * 
-     * @param name
+     * @param name String to update name.
      */
     public void setName(String name) {
         this.name = name;
@@ -69,7 +69,7 @@ public class Pet {
     /**
      * setGender will update the gender.
      * 
-     * @param gender
+     * @param gender String to update Gender.
      */
     public void setGender(String gender) {
         this.gender = gender;
@@ -78,7 +78,7 @@ public class Pet {
     /**
      * setPetID will update the PID.
      * 
-     * @param petID
+     * @param petID Integer to update PetID.
      */
     public void setPetID(int petID) {
         this.petID = petID;
@@ -87,7 +87,7 @@ public class Pet {
     /**
      * setSpecies will update species.
      * 
-     * @param species
+     * @param species String to update species.
      */
     public void setSpecies(String species) {
         this.species = species;
@@ -96,7 +96,7 @@ public class Pet {
     /**
      * setComments will update comments.
      * 
-     * @param comments
+     * @param comments String to update comments.
      */
     public void setComments(String comments) {
         this.comments = comments;
