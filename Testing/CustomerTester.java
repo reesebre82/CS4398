@@ -64,12 +64,4 @@ public class CustomerTester {
 
         assertEquals(2, customer.getPets().size());
     }
-
-    @Test
-    public void testGetSetCID() {
-        Customer customer = new Customer();
-        customer.setCustomerID(15);
-
-        assertEquals(15, customer.getCustomerID());
-    }
 }
