@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.*;
 
 import API.*;
-import DatabaseSystems.DatabaseManager;
 
 public class CustomerManagerTester {
 
@@ -29,6 +28,10 @@ public class CustomerManagerTester {
     @Test
     public void testGetCustomer3() {
         CustomerManager cm = new CustomerManager();
+        Customer c = new Customer();
+        c.setFirstName("George");
+        c.setLastName("smith");
+        cm.addCustomer(c);
         Customer customer = cm.getCustomer("George", "smith");
 
         assertEquals("George", customer.getFirstName());
@@ -60,7 +63,6 @@ public class CustomerManagerTester {
         Pet pet = new Pet();
         pet.setPetID(1);
         pet.setName("Jackson");
-        pet.setPetID(DatabaseManager.addPet(pet));
 
         Customer customer = new Customer();
 
@@ -76,6 +78,13 @@ public class CustomerManagerTester {
     @Test
     public void testRemoveCustomer() {
         Customer customer = new Customer();
+        customer.setFirstName("Jan");
+        customer.setLastName("Mela");
 
+        CustomerManager cm = new CustomerManager();
+        cm.addCustomer(customer);
+        cm.removeCustomer(customer.getCustomerID());
+
+        assertEquals("ERROR", cm.getCustomer(customer.getCustomerID()).getFirstName());
     }
 }
