@@ -26,6 +26,11 @@ public class WorkWeek {
         }
     }
 
+    /**
+     * @param employees ArrayList<Employee> ArrayList of employees that may be added
+     *                  to the day.
+     * @param day       Integer day for the employees to be added to.
+     */
     private void fillDay(ArrayList<Employee> employees, int day) {
         ArrayList<Integer> ignoreID = new ArrayList<Integer>();
         while (!days.get(day).isFull()) {
@@ -79,12 +84,17 @@ public class WorkWeek {
         }
     }
 
+    /**
+     * @param employees ArrayList<Employee> ArrayList of employees to fill week.
+     */
     public void fillWeek(ArrayList<Employee> employees) {
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++)
             fillDay(employees, i);
-        }
     }
 
+    /**
+     * @return String
+     */
     public String toString() {
         String str = "";
         for (int i = 1; i <= 7; i++) {

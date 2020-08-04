@@ -12,10 +12,12 @@ public class Scheduler {
         weeks.add(new WorkWeek());
     }
 
+    /**
+     * @param employees ArrayList<Employee> ArrayList of employees to populate the
+     *                  schedule.
+     */
     public void PopulateWeek(ArrayList<Employee> employees) {
         for (WorkWeek week : weeks) {
-            // Copy employees and post to week
-            // that way each week employees get their hours
             ArrayList<Employee> deepCopyEmployees = new ArrayList<Employee>();
             for (Employee employee : employees) {
                 deepCopyEmployees.add(new Employee(employee));

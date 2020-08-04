@@ -92,7 +92,7 @@ public class DatabaseManager {
      * addEmployee will create a query to create a new employee and send it to the
      * database
      * 
-     * @param employee
+     * @param employee Employee to be added to the database.
      * @return EID
      */
     public static int addEmployee(Employee employee) {
@@ -125,7 +125,7 @@ public class DatabaseManager {
     /**
      * addPet will create a query to create a new pet and send it to the database
      * 
-     * @param pet
+     * @param pet Pet to be added to the database.
      * @return PID
      */
     public static int addPet(Pet pet) {
@@ -160,7 +160,7 @@ public class DatabaseManager {
      * addCustomer will create a query to create a new customer and send it to the
      * database
      * 
-     * @param customer
+     * @param customer Customer to be added to the database.
      * @return CID
      */
     public static int addCustomer(Customer customer) {
@@ -292,7 +292,7 @@ public class DatabaseManager {
     /**
      * updateEmployee will update a employee record in the database
      * 
-     * @param employee
+     * @param employee Employee to be updated.
      */
     public static void updateEmployee(Employee employee) {
         try {
@@ -327,7 +327,7 @@ public class DatabaseManager {
     /**
      * updateCustomer will update a customer record in the database
      * 
-     * @param customer
+     * @param customer Customer to be updated.
      */
     public static void updateCustomer(Customer customer) {
         try {
@@ -356,7 +356,7 @@ public class DatabaseManager {
     /**
      * updatePet will update a Pet record in the database
      * 
-     * @param pet
+     * @param pet Pet to be updated.
      */
     public static void updatePet(Pet pet) {
         try {
@@ -389,7 +389,7 @@ public class DatabaseManager {
     }
 
     /**
-     * @param EID
+     * @param EID Integer EmployeeID of employee to be removed.
      */
     public static void removeEmployee(int EID) {
         try {
@@ -408,7 +408,7 @@ public class DatabaseManager {
     }
 
     /**
-     * @param CID
+     * @param CID Integer CID of customer to be removed.
      */
     public static void removeCustomer(int CID) {
         try {
@@ -427,7 +427,7 @@ public class DatabaseManager {
     }
 
     /**
-     * @param PID
+     * @param PID Integer of Pet to be removed.
      */
     public static void removePet(int PID) {
         try {
