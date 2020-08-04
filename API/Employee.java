@@ -36,38 +36,65 @@ public class Employee extends PersonModel {
         this.employeeID = employee.getEmployeeID();
     }
 
+    /**
+     * @return int
+     */
     public int getEmployeeID() {
         return employeeID;
     }
 
+    /**
+     * @return String
+     */
     public String getStartDate() {
         return startDate;
     }
 
+    /**
+     * @return int
+     */
     public int getWeeklyHours() {
         return weeklyHours;
     }
 
+    /**
+     * @return int
+     */
     public int getScheduledHours() {
         return scheduledHours;
     }
 
+    /**
+     * @param scheduledHours
+     */
     public void setScheduledHours(int scheduledHours) {
         this.scheduledHours = scheduledHours;
     }
 
+    /**
+     * @param weeklyHours
+     */
     public void setWeeklyHours(int weeklyHours) {
         this.weeklyHours = weeklyHours;
     }
 
+    /**
+     * @param employeeID
+     */
     public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
+    /**
+     * @param startDate
+     */
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * @return String
+     */
     public String toString() {
         String str = "";
         str += "EID: ";

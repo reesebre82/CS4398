@@ -19,16 +19,34 @@ public class CustomerManager {
         }
     }
 
+    /**
+     * addCustomer adds a customer to the database and ArrayList
+     * 
+     * @param customer
+     */
     public void addCustomer(Customer customer) {
         customer.setCustomerID(DatabaseManager.addCustomer(customer));
         customers.add(customer);
     }
 
+    /**
+     * addPetWithCustomerID will add a pet to the customer with the given customerID
+     * 
+     * @param pet
+     * @param customerID
+     */
     public void addPetWithCustomerID(Pet pet, int customerID) {
         Customer customer = getCustomer(customerID);
         customer.addPet(pet);
     }
 
+    /**
+     * removePet will remove a pet with the PetID from the customer with the
+     * CustomerID CID
+     * 
+     * @param PID
+     * @param CID
+     */
     public void removePet(int PID, int CID) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getCustomerID() == CID) {
@@ -43,6 +61,11 @@ public class CustomerManager {
         }
     }
 
+    /**
+     * removeCustomer will remove a customer with a given customerID
+     * 
+     * @param CID
+     */
     public void removeCustomer(int CID) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getCustomerID() == CID) {
@@ -52,6 +75,13 @@ public class CustomerManager {
         }
     }
 
+    /**
+     * getCustomer will return a customer with a given first and last name
+     * 
+     * @param firstName
+     * @param lastName
+     * @return Customer
+     */
     public Customer getCustomer(String firstName, String lastName) {
         for (Customer customer : customers)
             if (firstName.equals(customer.getFirstName()) && lastName.equals(customer.getLastName()))
@@ -63,6 +93,12 @@ public class CustomerManager {
         return customer;
     }
 
+    /**
+     * getCustomer will return a customer with a given customerID
+     * 
+     * @param customerID
+     * @return Customer
+     */
     public Customer getCustomer(int customerID) {
         for (Customer customer : customers)
             if (customerID == customer.getCustomerID())
@@ -74,6 +110,13 @@ public class CustomerManager {
         return customer;
     }
 
+    /**
+     * updateCustomer will update a customer in the ArrayList and then update it in
+     * the database.
+     * 
+     * @param customerID
+     * @param updatedCustomer
+     */
     public void updateCustomer(int customerID, Customer updatedCustomer) {
         for (int i = 0; i < customers.size(); i++) {
             if (customerID == customers.get(i).getCustomerID()) {
@@ -85,6 +128,10 @@ public class CustomerManager {
         }
     }
 
+    /**
+     * closeDatabase will update all of the customer data that may not have been
+     * updated.
+     */
     public void closeDatabase() {
         for (Customer customer : customers) {
             DatabaseManager.updateCustomer(customer);
@@ -93,6 +140,9 @@ public class CustomerManager {
         }
     }
 
+    /**
+     * @return String
+     */
     public String toString() {
         String str = "Customer Data:\n";
         int index = 1;

@@ -21,28 +21,50 @@ public class Customer extends PersonModel {
         customerID = -1;
     }
 
+    /**
+     * addPet adds a pet to the customer.
+     * 
+     * @param pet
+     */
     public void addPet(Pet pet) {
         pets.add(pet);
     }
 
+    /**
+     * removePet removes a pet from the customer.
+     * 
+     * @param petID
+     */
     public void removePet(int petID) {
         for (int i = 0; i < pets.size(); i++)
             if (pets.get(i).petID == petID)
                 pets.remove(i);
     }
 
+    /**
+     * @param customerID
+     */
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
 
+    /**
+     * @return ArrayList<Pet>
+     */
     public ArrayList<Pet> getPets() {
         return pets;
     }
 
+    /**
+     * @return int
+     */
     public int getCustomerID() {
         return customerID;
     }
 
+    /**
+     * @return String
+     */
     public String toString() {
         String str = "";
         str += "CID: ";

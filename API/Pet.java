@@ -28,6 +28,157 @@ public class Pet {
         this.comments = comments;
     }
 
+    /**
+     * setBirthday will update the birthday.
+     * 
+     * @param birthday
+     */
+    /* Start of Getters and Setters */
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    /**
+     * setBreed will update the breed.
+     * 
+     * @param breed
+     */
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    /**
+     * setCustomerID will update the CustomerID.
+     * 
+     * @param customerID
+     */
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    /**
+     * setName will update the name.
+     * 
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * setGender will update the gender.
+     * 
+     * @param gender
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * setPetID will update the PID.
+     * 
+     * @param petID
+     */
+    public void setPetID(int petID) {
+        this.petID = petID;
+    }
+
+    /**
+     * setSpecies will update species.
+     * 
+     * @param species
+     */
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    /**
+     * setComments will update comments.
+     * 
+     * @param comments
+     */
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    /**
+     * getBirthday will return the birthday.
+     * 
+     * @return String
+     */
+    public String getBirthday() {
+        return birthday;
+    }
+
+    /**
+     * getBreed will return the breed.
+     * 
+     * @return String
+     */
+    public String getBreed() {
+        return breed;
+    }
+
+    /**
+     * getCustomerID will return the CID.
+     * 
+     * @return int
+     */
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    /**
+     * getName will return the name.
+     * 
+     * @return String
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * getGender will return the gender.
+     * 
+     * @return String
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * getPetID will return the PId.
+     * 
+     * @return int
+     */
+    public int getPetID() {
+        return petID;
+    }
+
+    /**
+     * getSpecies will return the species.
+     * 
+     * @return String
+     */
+    public String getSpecies() {
+        return species;
+    }
+
+    /**
+     * getComments will return the comments.
+     * 
+     * @return String
+     */
+    public String getComments() {
+        return comments;
+    }
+
+    /* End of Getters and Setters */
+
+    /**
+     * @return String
+     */
     public String toString() {
         String str = "";
         str += "PID: ";
@@ -46,72 +197,4 @@ public class Pet {
         str += comments + "\n\t" + "  ";
         return str;
     }
-
-    /* Start of Getters and Setters */
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setPetID(int petID) {
-        this.petID = petID;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public int getPetID() {
-        return petID;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    /* End of Getters and Setters */
 }
