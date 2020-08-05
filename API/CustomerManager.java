@@ -112,6 +112,9 @@ public class CustomerManager {
         return customer;
     }
 
+    /**
+     * @return ArrayList<Customer>
+     */
     public ArrayList<Customer> getCustomers() {
         return customers;
     }
