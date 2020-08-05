@@ -16,8 +16,9 @@ public class Employee extends PersonModel {
         employeeID = -1;
     }
 
-    public Employee(String firstName, String lastName, String phoneNumber, int weeklyHours, int scheduledHours) {
-        startDate = "1900-01-01";
+    public Employee(String firstName, String lastName, String phoneNumber, String startDate, int weeklyHours,
+            int scheduledHours) {
+        this.startDate = startDate;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

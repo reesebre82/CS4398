@@ -31,7 +31,7 @@ public class WorkWeek {
      *                  to the day.
      * @param day       Integer day for the employees to be added to.
      */
-    private void fillDay(ArrayList<Employee> employees, int day) {
+    private ArrayList<Employee> fillDay(ArrayList<Employee> employees, int day) {
         ArrayList<Integer> ignoreID = new ArrayList<Integer>();
         while (!days.get(day).isFull()) {
             int lowestEmployeeIndex = -1;
@@ -67,7 +67,7 @@ public class WorkWeek {
 
             if (employees.size() == ignoreID.size()) {
                 System.out.println("Not Enough Employees");
-                return;
+                return new ArrayList<Employee>();
             }
 
             ignoreID.add(employees.get(lowestEmployeeIndex).getEmployeeID());
@@ -82,14 +82,20 @@ public class WorkWeek {
                                 + employees.get(lowestEmployeeIndex).getWeeklyHours() / 5);
             }
         }
+        return days.get(day).employees;
     }
 
     /**
      * @param employees ArrayList<Employee> ArrayList of employees to fill week.
      */
-    public void fillWeek(ArrayList<Employee> employees) {
-        for (int i = 0; i < 7; i++)
-            fillDay(employees, i);
+    public ArrayList<ArrayList<Employee>> fillWeek(ArrayList<Employee> employees) {
+        ArrayList<ArrayList<Employee>> employeesWorking = new ArrayList<ArrayList<Employee>>();
+        for (int i = 0; i < 7; i++) {
+            ArrayList<Employee> dayEmployees = fillDay(employees, i);
+            employeesWorking.add(dayEmployees);
+        }
+
+        return employeesWorking;
     }
 
     /**

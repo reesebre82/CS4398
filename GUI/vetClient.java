@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JButton;
@@ -18,13 +19,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import API.*;
+
 /**
  *
  * @author Jessica
  */
 public class vetClient extends javax.swing.JFrame {
 
-    DateFormat dateFormat = new SimpleDateFormat("mm/dd/yy");
+    DateFormat dateFormat = new SimpleDateFormat("MM/dd/YY");
     Date date = new Date();
     Calendar cal = Calendar.getInstance();
     DefaultTableModel model;
@@ -34,10 +37,15 @@ public class vetClient extends javax.swing.JFrame {
      */
     public vetClient() {
         initComponents();
+        System.out.println("Started Client");
 
         model = (DefaultTableModel) clientTable.getModel();
         dateTxt.setText(" " + dateFormat.format(date));
 
+        clientTable.setShowHorizontalLines(true);
+        clientTable.setShowVerticalLines(true);
+
+        fillTable();
     }
 
     /**
@@ -70,6 +78,8 @@ public class vetClient extends javax.swing.JFrame {
         bPetEdit = new javax.swing.JButton();
         dateL = new javax.swing.JLabel();
         dateTxt = new javax.swing.JTextField();
+
+        cm = new CustomerManager();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Employee Management");
@@ -113,6 +123,12 @@ public class vetClient extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(clientTable);
+        if (clientTable.getColumnModel().getColumnCount() > 0) {
+            clientTable.getColumnModel().getColumn(0).setResizable(false);
+            clientTable.getColumnModel().getColumn(1).setResizable(false);
+            clientTable.getColumnModel().getColumn(2).setResizable(false);
+            clientTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         bAdd.setText("ADD");
         bAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -151,61 +167,56 @@ public class vetClient extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup().addGap(28, 28, 28).addGroup(jPanel1Layout
-                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(
-                                        jPanel1Layout.createSequentialGroup().addGap(12, 12, 12).addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
+                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup().addGap(28, 28, 28).addGroup(jPanel1Layout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel1)
                                 .addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(phoneL)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(cidL, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup().addGap(12, 12, 12)
+                                                .addComponent(jLabel2))
+                                        .addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(phoneL)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(cidL, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cidTxt, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(35, 35, 35).addComponent(firstNameL)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cidTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 83,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                false)
+                                                        .addComponent(phoneTxt).addComponent(firstNameTxt,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(28, 28, 28).addComponent(lastNameL)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(firstNameL)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(phoneTxt).addComponent(firstNameTxt,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(52, 52, 52).addComponent(lastNameL)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(106, 106, 106))
-                        .addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel1).addGap(277, 277, 277)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(bDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addComponent(bUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addComponent(bAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addComponent(bPetEdit, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1)
-                        .addContainerGap()));
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(bDelete, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(bUpdate, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(bAdd, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(bPetEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 100,
+                                                        Short.MAX_VALUE)))))
+                        .addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(38, Short.MAX_VALUE)));
         jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30).addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(30, 30, 30).addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel2))
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(71, 71, 71).addComponent(bAdd)
-                                        .addGap(32, 32, 32).addComponent(bDelete)))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(62, 62, 62).addComponent(bUpdate)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33,
-                                                Short.MAX_VALUE)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel2).addGap(69, 69, 69)
                                         .addGroup(jPanel1Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(firstNameL)
@@ -216,7 +227,7 @@ public class vetClient extends javax.swing.JFrame {
                                                 .addComponent(lastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cidTxt).addComponent(cidL).addComponent(bPetEdit))
+                                                .addComponent(cidTxt).addComponent(cidL))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -224,7 +235,19 @@ public class vetClient extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(bAdd).addGap(32, 32, 32)
+                                        .addComponent(bDelete).addGap(28, 28, 28)
+                                        .addGroup(jPanel1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(62, 62, 62)
+                                                        .addComponent(bUpdate))
+                                                .addComponent(bPetEdit))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25,
+                                                Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(22, 22, 22)))));
 
         dateL.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         dateL.setText("Date:");
@@ -236,8 +259,10 @@ public class vetClient extends javax.swing.JFrame {
         layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
                 .createSequentialGroup().addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(bBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -409,9 +434,15 @@ public class vetClient extends javax.swing.JFrame {
 
     // ADD BOTTON
     private void bAddActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bAddActionPerformed
-        // TODO add your handling code here:
-        model.insertRow(model.getRowCount(),
-                new Object[] { cidTxt.getText(), firstNameTxt.getText(), lastNameTxt.getText(), phoneTxt.getText() });
+        // TODO add your handling code here
+        Customer customer = new Customer();
+        customer.setFirstName(firstNameTxt.getText());
+        customer.setLastName(lastNameTxt.getText());
+        customer.setPhoneNumber(phoneTxt.getText());
+        customer.setCustomerID(cm.addCustomer(customer));
+
+        model.insertRow(model.getRowCount(), new Object[] { customer.getCustomerID(), customer.getFirstName(),
+                customer.getLastName(), customer.getPhoneNumber() });
 
     }// GEN-LAST:event_bAddActionPerformed
 
@@ -420,8 +451,13 @@ public class vetClient extends javax.swing.JFrame {
         // TODO add your handling code here:
         // check for selected row first
         if (clientTable.getSelectedRowCount() == 1) {
+            int CID = (int) model.getValueAt(clientTable.getSelectedRow(), 0);
+            cm.removeCustomer(CID);
             model.removeRow(clientTable.getSelectedRow());
 
+            firstNameTxt.setText("");
+            lastNameTxt.setText("");
+            phoneTxt.setText("");
         }
     }// GEN-LAST:event_bDeleteActionPerformed
 
@@ -429,17 +465,18 @@ public class vetClient extends javax.swing.JFrame {
     private void bUpdateActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bUpdateActionPerformed
         // TODO add your handling code here:
         if (clientTable.getSelectedRowCount() == 1) {
-
+            int CID = (int) model.getValueAt(clientTable.getSelectedRow(), 0);
             String fname = firstNameTxt.getText();
             String lname = lastNameTxt.getText();
             String phone = phoneTxt.getText();
 
-            // set values on table rows
+            Customer customer = new Customer(fname, lname, phone);
+
+            cm.updateCustomer(CID, customer);
 
             model.setValueAt(fname, clientTable.getSelectedRow(), 1);
             model.setValueAt(lname, clientTable.getSelectedRow(), 2);
             model.setValueAt(phone, clientTable.getSelectedRow(), 3);
-
         }
     }// GEN-LAST:event_bUpdateActionPerformed
 
@@ -461,11 +498,23 @@ public class vetClient extends javax.swing.JFrame {
     private void bPetEditActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bPetEditActionPerformed
         // TODO add your handling code here:
         if (clientTable.getSelectedRowCount() == 1) {
+            int CID = (int) model.getValueAt(clientTable.getSelectedRow(), 0);
             this.setVisible(false);
-            new vetPet().setVisible(true);
-
+            vetPet vp = new vetPet();
+            vp.setVisible(true);
+            vp.setCustomer(cm.getCustomer(CID));
+            vp.fillTable();
         }
     }// GEN-LAST:event_bPetEditActionPerformed
+
+    private void fillTable() {
+        ArrayList<Customer> customers = cm.getCustomers();
+        for (int i = 0; i < customers.size(); i++) {
+            Customer customer = customers.get(i);
+            model.insertRow(model.getRowCount(), new Object[] { customer.getCustomerID(), customer.getFirstName(),
+                    customer.getLastName(), customer.getPhoneNumber() });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAdd;
@@ -488,5 +537,6 @@ public class vetClient extends javax.swing.JFrame {
     private javax.swing.JTextField lastNameTxt;
     private javax.swing.JLabel phoneL;
     private javax.swing.JTextField phoneTxt;
+    private CustomerManager cm;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,6 +2,8 @@ package API;
 
 import java.util.ArrayList;
 
+import DatabaseSystems.DatabaseManager;
+
 public class Customer extends PersonModel {
 
     private ArrayList<Pet> pets;
@@ -39,6 +41,17 @@ public class Customer extends PersonModel {
         for (int i = 0; i < pets.size(); i++)
             if (pets.get(i).petID == petID)
                 pets.remove(i);
+    }
+
+    public void updatePet(int petID, Pet updatedPet) {
+        for (int i = 0; i < pets.size(); i++) {
+            if (petID == pets.get(i).getPetID()) {
+                updatedPet.setPetID(petID);
+                pets.remove(i);
+                pets.add(updatedPet);
+                DatabaseManager.updatePet(updatedPet);
+            }
+        }
     }
 
     /**

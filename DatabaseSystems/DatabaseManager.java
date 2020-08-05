@@ -88,6 +88,26 @@ public class DatabaseManager {
         return max + 1;
     }
 
+    protected static int getIncrementalSID() {
+        int max = 1;
+        try {
+            String query = "SELECT * FROM Schedule";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            Statement statement = conn.createStatement();
+
+            ResultSet rSet = statement.executeQuery(query);
+
+            while (rSet.next()) {
+                max = Math.max(rSet.getInt("SID"), max);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return max + 1;
+    }
+
     /**
      * addEmployee will create a query to create a new employee and send it to the
      * database
@@ -181,6 +201,44 @@ public class DatabaseManager {
 
             return incrementalCID;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public static int addWeek(ArrayList<ArrayList<Employee>> employeeWeek, int week) {
+        try {
+            String prepareStatement = "insert into Schedule (SID, FirstName, WeekDay, Week) values (?, ?, ?, ?)";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            conn.setAutoCommit(false);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            int incrementalSID = DatabaseManager.getIncrementalSID();
+
+            for (int i = 0; i < employeeWeek.size(); i++) {
+                ArrayList<Employee> employees = employeeWeek.get(i);
+                for (int j = 0; j < employees.size(); j++) {
+                    Employee employee = employees.get(j);
+
+                    statement.setInt(1, incrementalSID++);
+                    statement.setString(2, employee.getFirstName());
+                    statement.setInt(3, i);
+                    statement.setInt(4, week);
+
+                    statement.addBatch();
+                }
+            }
+
+            statement.executeBatch();
+            conn.commit();
+
+            conn.setAutoCommit(true);
+
+            return incrementalSID;
+        } catch (
+
+        Exception e) {
             e.printStackTrace();
         }
         return -1;
@@ -287,6 +345,34 @@ public class DatabaseManager {
             e.printStackTrace();
         }
         return pets;
+    }
+
+    public static ArrayList<ArrayList<Employee>> getEmployeeSchedule(int week) {
+        ArrayList<ArrayList<Employee>> employeeList = new ArrayList<ArrayList<Employee>>();
+        for (int i = 0; i < 7; i++) {
+            employeeList.add(new ArrayList<Employee>());
+        }
+        try {
+            String prepareStatement = "SELECT * from Schedule WHERE Week = ?";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            PreparedStatement statement = conn.prepareStatement(prepareStatement);
+
+            statement.setInt(1, week);
+
+            ResultSet rSet = statement.executeQuery();
+
+            while (rSet.next()) {
+                Employee employee = new Employee();
+                employee.setFirstName(rSet.getString("FirstName"));
+
+                employeeList.get(rSet.getInt("WeekDay")).add(employee);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employeeList;
     }
 
     /**
@@ -439,6 +525,20 @@ public class DatabaseManager {
 
             statement.setInt(1, PID);
             statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteWeek() {
+        try {
+            String prepareStatement = "DELETE FROM Schedule";
+
+            Connection conn = DriverManager.getConnection(url, deviceID, UUID);
+            Statement statement = conn.createStatement();
+
+            statement.executeUpdate(prepareStatement);
 
         } catch (Exception e) {
             e.printStackTrace();

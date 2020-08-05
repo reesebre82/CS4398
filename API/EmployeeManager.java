@@ -15,10 +15,12 @@ public class EmployeeManager {
      * addEmployee will add an employee to the ArrayList and Database.
      * 
      * @param employee Employee to add.
+     * @return int
      */
-    public void addEmployee(Employee employee) {
+    public int addEmployee(Employee employee) {
         employee.setEmployeeID(DatabaseManager.addEmployee(employee));
         employees.add(employee);
+        return employee.getEmployeeID();
     }
 
     /**
@@ -30,7 +32,7 @@ public class EmployeeManager {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getEmployeeID() == EID) {
                 DatabaseManager.removeEmployee(EID);
-                employees.remove(EID);
+                employees.remove(i);
             }
         }
     }
@@ -59,7 +61,7 @@ public class EmployeeManager {
      * @param employeeID Integer EmployeeID to be returned.
      * @return Employee
      */
-    public Employee getCustomer(int employeeID) {
+    public Employee getEmployee(int employeeID) {
         for (Employee employee : employees)
             if (employeeID == employee.getEmployeeID())
                 return employee;
@@ -71,6 +73,13 @@ public class EmployeeManager {
     }
 
     /**
+     * @return ArrayList<Employee>
+     */
+    public ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+    /**
      * updateEmployee will update an employee in the ArrayList and Database with a
      * given EmployeeID.
      * 
@@ -79,12 +88,12 @@ public class EmployeeManager {
      *                        updated.
      */
     public void updateEmployee(int employeeID, Employee updatedEmployee) {
-        for (Employee employee : employees) {
-            if (employeeID == employee.getEmployeeID()) {
+        for (int i = 0; i < employees.size(); i++) {
+            if (employeeID == employees.get(i).getEmployeeID()) {
                 updatedEmployee.setEmployeeID(employeeID);
-                employees.remove(employee);
-                employees.add(updatedEmployee);
-                DatabaseManager.updateEmployee(employee);
+                employees.set(i, updatedEmployee);
+                DatabaseManager.updateEmployee(updatedEmployee);
+                System.out.println("Updated");
             }
         }
     }

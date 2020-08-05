@@ -23,10 +23,12 @@ public class CustomerManager {
      * addCustomer adds a customer to the database and ArrayList
      * 
      * @param customer Customer Customer to be added.
+     * @return int
      */
-    public void addCustomer(Customer customer) {
+    public int addCustomer(Customer customer) {
         customer.setCustomerID(DatabaseManager.addCustomer(customer));
         customers.add(customer);
+        return customer.getCustomerID();
     }
 
     /**
@@ -54,7 +56,7 @@ public class CustomerManager {
                 for (int j = 0; j < pets.size(); j++) {
                     if (pets.get(j).getPetID() == PID) {
                         DatabaseManager.removePet(PID);
-                        customers.get(i).removePet(PID);
+                        customers.get(i).removePet(i);
                     }
                 }
             }
@@ -108,6 +110,10 @@ public class CustomerManager {
         customer.setFirstName("ERROR");
         customer.setLastName("ERROR");
         return customer;
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
     }
 
     /**
