@@ -1,4 +1,4 @@
-package VetApp.API;
+package API;
 
 public class Pet {
 

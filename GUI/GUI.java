@@ -1,4 +1,4 @@
-package VetApp.GUI;
+package GUI;
 
 public class GUI {
 

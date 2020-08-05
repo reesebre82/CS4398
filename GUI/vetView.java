@@ -1,4 +1,4 @@
-package VetApp.GUI;
+package GUI;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

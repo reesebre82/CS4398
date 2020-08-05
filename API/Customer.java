@@ -1,4 +1,4 @@
-package VetApp.API;
+package API;
 
 import java.util.ArrayList;
 
@@ -43,6 +43,12 @@ public class Customer extends PersonModel {
                 pets.remove(i);
     }
 
+    /**
+     * updatePet will update a pet for a given customer.
+     * 
+     * @param petID      Integer PID for pet to be updated.
+     * @param updatedPet Pet information to update the pet to.
+     */
     public void updatePet(int petID, Pet updatedPet) {
         for (int i = 0; i < pets.size(); i++) {
             if (petID == pets.get(i).getPetID()) {

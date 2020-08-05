@@ -1,4 +1,3 @@
-package VetApp;
 
 import GUI.*;
 

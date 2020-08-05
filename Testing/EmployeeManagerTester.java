@@ -1,4 +1,4 @@
-package VetApp.Testing;
+package Testing;
 
 import org.junit.Test;
 
