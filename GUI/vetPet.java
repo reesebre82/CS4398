@@ -1,4 +1,4 @@
-package GUI;
+package VetApp.GUI;
 
 import java.awt.Color;
 import java.awt.Font;

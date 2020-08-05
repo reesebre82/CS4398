@@ -1,4 +1,4 @@
-package API;
+package VetApp.API;
 
 public class Employee extends PersonModel {
     private int employeeID;

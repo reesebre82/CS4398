@@ -1,4 +1,4 @@
-package SchedulerSystem;
+package VetApp.SchedulerSystem;
 
 import API.*;
 

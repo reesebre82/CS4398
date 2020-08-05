@@ -1,5 +1,4 @@
-
-package GUI;
+package VetApp.GUI;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -187,7 +186,7 @@ public class vetView extends javax.swing.JFrame {
                 jTabbedPane1.addTab("Week 3", jScrollPane3);
 
                 jLabel2.setIcon(new javax.swing.ImageIcon(
-                                "/Users/brendanreese/Documents/Programming/VSCode/Java/CS4398/GUI/PHOTOS/pets_row(1).png")); // NOI18N
+                                "/Users/brendanreese/Documents/Programming/VSCode/Java/VetApp/GUI/PHOTOS/pets_row(1).png")); // NOI18N
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
