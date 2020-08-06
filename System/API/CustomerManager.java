@@ -1,7 +1,7 @@
-package API;
+package System.API;
 
 import java.util.ArrayList;
-import DatabaseSystems.*;
+import System.DatabaseSystems.*;
 
 public class CustomerManager {
     private ArrayList<Customer> customers;

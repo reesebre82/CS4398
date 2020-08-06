@@ -1,4 +1,4 @@
-package GUI;
+package System.GUI;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,7 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import API.*;
+import System.API.*;
 
 /**
  *

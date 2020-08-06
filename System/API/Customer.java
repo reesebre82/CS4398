@@ -1,8 +1,9 @@
-package API;
+package System.API;
 
 import java.util.ArrayList;
 
-import DatabaseSystems.DatabaseManager;
+import System.*;
+import System.DatabaseSystems.DatabaseManager;
 
 public class Customer extends PersonModel {
 

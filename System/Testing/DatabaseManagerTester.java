@@ -1,4 +1,4 @@
-package Testing;
+package System.Testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.ArrayList;
 
 import org.junit.Test;
-import API.*;
-import DatabaseSystems.*;
+import System.API.*;
+import System.DatabaseSystems.*;
 
 /**
  * DatabaseManagerTester

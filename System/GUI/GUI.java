@@ -1,4 +1,4 @@
-package GUI;
+package System.GUI;
 
 public class GUI {
 

@@ -1,6 +1,6 @@
-package SchedulerSystem;
+package System.SchedulerSystem;
 
-import API.*;
+import System.API.*;
 
 import java.util.ArrayList;
 

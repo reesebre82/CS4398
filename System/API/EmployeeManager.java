@@ -1,8 +1,8 @@
-package API;
+package System.API;
 
 import java.util.ArrayList;
 
-import DatabaseSystems.DatabaseManager;
+import System.DatabaseSystems.DatabaseManager;
 
 public class EmployeeManager {
     private ArrayList<Employee> employees;

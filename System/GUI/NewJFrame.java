@@ -1,4 +1,4 @@
-package GUI;
+package System.GUI;
 
 import javax.swing.JOptionPane;
 
@@ -59,7 +59,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1.setBounds(240, 17, 295, 68);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(
-                "/Users/brendanreese/Documents/Programming/VSCode/Java/VetApp/GUI/PHOTOS/pets_big--copy-.png")); // NOI18N
+                "/Users/brendanreese/Documents/Programming/VSCode/Java/CS4398/System/GUI/PHOTOS/pets_big--copy-.png")); // NOI18N
         jPanel1.add(jLabel3);
         jLabel3.setBounds(50, 100, 740, 410);
 

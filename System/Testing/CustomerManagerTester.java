@@ -1,11 +1,11 @@
-package Testing;
+package System.Testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.*;
 
-import API.*;
+import System.API.*;
 
 public class CustomerManagerTester {
 

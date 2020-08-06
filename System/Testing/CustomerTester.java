@@ -1,10 +1,10 @@
-package Testing;
+package System.Testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.*;
 
-import API.*;
+import System.API.*;
 
 /**
  * CustomerTester
