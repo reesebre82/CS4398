@@ -12,7 +12,7 @@ public class CustomerManagerTester {
     @Test
     public void testGetCustomer() {
         CustomerManager cm = new CustomerManager();
-        Customer customer = cm.getCustomer(1);
+        Customer customer = cm.getCustomer(2);
 
         assertNotEquals("ERROR", customer.getFirstName());
     }
@@ -48,9 +48,9 @@ public class CustomerManagerTester {
     @Test
     public void testUpdateCustomer() {
         CustomerManager cm = new CustomerManager();
-        Customer customer = cm.getCustomer(1);
-        customer.setFirstName("Brendan");
-        customer.setLastName("Reese");
+        Customer customer = cm.getCustomer(2);
+        customer.setFirstName("jackie");
+        customer.setLastName("moon");
         cm.updateCustomer(customer.getCustomerID(), customer);
 
         Customer newCustomer = cm.getCustomer(1);
