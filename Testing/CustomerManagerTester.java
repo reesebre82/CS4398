@@ -12,7 +12,7 @@ public class CustomerManagerTester {
     @Test
     public void testGetCustomer() {
         CustomerManager cm = new CustomerManager();
-        Customer customer = cm.getCustomer(2);
+        Customer customer = cm.getCustomer(3);
 
         assertNotEquals("ERROR", customer.getFirstName());
     }
@@ -48,14 +48,14 @@ public class CustomerManagerTester {
     @Test
     public void testUpdateCustomer() {
         CustomerManager cm = new CustomerManager();
-        Customer customer = cm.getCustomer(2);
+        Customer customer = cm.getCustomer(3);
         customer.setFirstName("jackie");
         customer.setLastName("moon");
         cm.updateCustomer(customer.getCustomerID(), customer);
 
-        Customer newCustomer = cm.getCustomer(1);
+        Customer newCustomer = cm.getCustomer(3);
 
-        assertEquals("Brendan", newCustomer.getFirstName());
+        assertEquals("jackie", newCustomer.getFirstName());
     }
 
     @Test
@@ -76,16 +76,17 @@ public class CustomerManagerTester {
     @Test
     public void testRemovePet() {
         Pet pet = new Pet();
-        pet.setPetID(1);
+        pet.setPetID(5);
         pet.setName("Jackson");
 
         Customer customer = new Customer();
+        customer.setCustomerID(1);
 
         CustomerManager cm = new CustomerManager();
         cm.addCustomer(customer);
-        cm.addPetWithCustomerID(pet, customer.getCustomerID());
+        cm.addPetWithCustomerID(pet, 1);
 
-        cm.removePet(pet.getPetID(), customer.getCustomerID());
+        cm.removePet(5, 1);
 
         assertEquals(0, customer.getPets().size());
     }
