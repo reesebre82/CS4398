@@ -1,4 +1,4 @@
-package System.Testing;
+package Testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -2,7 +2,6 @@ package System.API;
 
 import java.util.ArrayList;
 
-import System.*;
 import System.DatabaseSystems.DatabaseManager;
 
 public class Customer extends PersonModel {
