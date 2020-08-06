@@ -184,8 +184,7 @@ public class vetView extends javax.swing.JFrame {
 
                 jTabbedPane1.addTab("Week 3", jScrollPane3);
 
-                jLabel2.setIcon(new javax.swing.ImageIcon(
-                                "/Users/brendanreese/Documents/Programming/VSCode/Java/CS4398/System/GUI/PHOTOS/pets_row(1).png")); // NOI18N
+                jLabel2.setIcon(new javax.swing.ImageIcon("CS4398/System/GUI/PHOTOS/pets_row(1).png")); // NOI18N
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);

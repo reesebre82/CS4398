@@ -58,8 +58,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(240, 17, 295, 68);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(
-                "/Users/brendanreese/Documents/Programming/VSCode/Java/CS4398/System/GUI/PHOTOS/pets_big--copy-.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("CS4398/System/GUI/PHOTOS/pets_big--copy-.png")); // NOI18N
         jPanel1.add(jLabel3);
         jLabel3.setBounds(50, 100, 740, 410);
 
