@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 import System.API.*;
 import System.DatabaseSystems.*;
+import System.SchedulerSystem.Scheduler;
 
 /**
  * DatabaseManagerTester
@@ -145,6 +146,30 @@ public class DatabaseManagerTester {
         }
 
         assertEquals(true, found);
+    }
+
+    @Test
+    public void testAddWeek() {
+        Scheduler scheduler = new Scheduler();
+        EmployeeManager em = new EmployeeManager();
+        ArrayList<ArrayList<Employee>> employees = scheduler.populateWeek(em.getEmployees());
+        DatabaseManager.deleteWeek();
+        DatabaseManager.addWeek(employees, 0);
+
+        ArrayList<ArrayList<Employee>> newEmployees = DatabaseManager.getEmployeeSchedule(0);
+        assertNotEquals(0, newEmployees.size());
+    }
+
+    @Test
+    public void testDeleteWeek() {
+        Scheduler scheduler = new Scheduler();
+        EmployeeManager em = new EmployeeManager();
+        ArrayList<ArrayList<Employee>> employees = scheduler.populateWeek(em.getEmployees());
+        DatabaseManager.addWeek(employees, 0);
+        DatabaseManager.deleteWeek();
+
+        ArrayList<ArrayList<Employee>> newEmployees = DatabaseManager.getEmployeeSchedule(0);
+        assertEquals(0, newEmployees.get(0).size());
     }
 
     @Test

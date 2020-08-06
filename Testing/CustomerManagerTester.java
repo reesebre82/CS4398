@@ -59,6 +59,21 @@ public class CustomerManagerTester {
     }
 
     @Test
+    public void testAddPetWithCustomerID() {
+        Pet pet = new Pet();
+        pet.setPetID(1);
+        pet.setName("Jackson");
+
+        Customer customer = new Customer();
+
+        CustomerManager cm = new CustomerManager();
+        cm.addCustomer(customer);
+        cm.addPetWithCustomerID(pet, customer.getCustomerID());
+
+        assertEquals(1, customer.getPets().size());
+    }
+
+    @Test
     public void testRemovePet() {
         Pet pet = new Pet();
         pet.setPetID(1);

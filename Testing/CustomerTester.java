@@ -1,5 +1,6 @@
 package Testing;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.*;
@@ -63,5 +64,27 @@ public class CustomerTester {
         customer.removePet(1);
 
         assertEquals(2, customer.getPets().size());
+    }
+
+    @Test
+    public void testUpdatePet() {
+        Customer customer = new Customer();
+        customer.addPet(new Pet());
+        customer.addPet(new Pet());
+        Pet pet = new Pet();
+        pet.setPetID(1);
+        pet.setName("Joe");
+        customer.addPet(pet);
+
+        Pet newPet = new Pet();
+        newPet.setName("Bobby");
+        customer.updatePet(1, newPet);
+
+        Pet finalPet = null;
+        for (int i = 0; i < customer.getPets().size(); i++)
+            if (customer.getPets().get(i).getName() == newPet.getName())
+                finalPet = customer.getPets().get(i);
+
+        assertNotEquals(null, finalPet);
     }
 }
