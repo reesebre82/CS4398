@@ -1,8 +1,8 @@
 package System.GUI;
 
-public class GUI {
+public class GraphicalUserInterface {
 
-    public GUI() {
+    public GraphicalUserInterface() {
         NewJFrame view = new NewJFrame();
         view.setVisible(true);
     }
