@@ -13,8 +13,11 @@ public class WorkDay {
     }
 
     /**
-     * @param employee Employee to be added to the work day
-     * @param hours    Integer hours to be removed from the work day.
+     * addEmployee will add an employee to the work day and remove hours that the
+     * employee will work from the total available hours.
+     * 
+     * @param employee Employee that will be added.
+     * @param hours    Integer number of hours to be changed.
      */
     public void addEmployee(Employee employee, int hours) {
         employees.add(employee);
@@ -22,6 +25,8 @@ public class WorkDay {
     }
 
     /**
+     * isFull will state if the day is full of employees.
+     * 
      * @return boolean
      */
     public boolean isFull() {

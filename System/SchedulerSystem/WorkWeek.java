@@ -27,9 +27,12 @@ public class WorkWeek {
     }
 
     /**
+     * fillDay will is the algorithm that will fill the day with employees.
+     * 
      * @param employees ArrayList<Employee> ArrayList of employees that may be added
      *                  to the day.
      * @param day       Integer day for the employees to be added to.
+     * @return ArrayList<Employee>
      */
     private ArrayList<Employee> fillDay(ArrayList<Employee> employees, int day) {
         ArrayList<Integer> ignoreID = new ArrayList<Integer>();
@@ -86,7 +89,10 @@ public class WorkWeek {
     }
 
     /**
+     * fillWeek will fill the entire week with employees.
+     * 
      * @param employees ArrayList<Employee> ArrayList of employees to fill week.
+     * @return ArrayList<ArrayList<Employee>>
      */
     public ArrayList<ArrayList<Employee>> fillWeek(ArrayList<Employee> employees) {
         ArrayList<ArrayList<Employee>> employeesWorking = new ArrayList<ArrayList<Employee>>();

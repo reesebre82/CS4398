@@ -88,6 +88,12 @@ public class DatabaseManager {
         return max + 1;
     }
 
+    /**
+     * GetIncrementalSID will get and return the next available ScheduleID from the
+     * database.
+     * 
+     * @return int
+     */
     protected static int getIncrementalSID() {
         int max = 1;
         try {
@@ -110,7 +116,7 @@ public class DatabaseManager {
 
     /**
      * addEmployee will create a query to create a new employee and send it to the
-     * database
+     * database.
      * 
      * @param employee Employee to be added to the database.
      * @return EID
@@ -143,7 +149,7 @@ public class DatabaseManager {
     }
 
     /**
-     * addPet will create a query to create a new pet and send it to the database
+     * addPet will create a query to create a new pet and send it to the database.
      * 
      * @param pet Pet to be added to the database.
      * @return PID
@@ -178,7 +184,7 @@ public class DatabaseManager {
 
     /**
      * addCustomer will create a query to create a new customer and send it to the
-     * database
+     * database.
      * 
      * @param customer Customer to be added to the database.
      * @return CID
@@ -206,6 +212,15 @@ public class DatabaseManager {
         return -1;
     }
 
+    /**
+     * addWeek adds a week of employee scheduled to the database.
+     * 
+     * @param employeeWeek ArrayList<ArrayList<Employe>> employeeWeek is a 2D
+     *                     ArrayList that holds the employees working per work day.
+     * @param week         Integer week is the day of the week (0: Monday ... 6:
+     *                     Sunday).
+     * @return int
+     */
     public static int addWeek(ArrayList<ArrayList<Employee>> employeeWeek, int week) {
         try {
             String prepareStatement = "insert into Schedule (SID, FirstName, WeekDay, Week) values (?, ?, ?, ?)";
@@ -246,7 +261,7 @@ public class DatabaseManager {
 
     /**
      * getEmployeesFromDatabase is a function that will read the data from the
-     * database and get all of the employee data to return
+     * database and get all of the employee data to return.
      * 
      * @return ArrayList<Employee>
      */
@@ -281,7 +296,7 @@ public class DatabaseManager {
 
     /**
      * getCustomersFromDatabase is a function that will read the data from the
-     * database and get all of the customer data to return
+     * database and get all of the customer data to return.
      * 
      * @return ArrayList<Customer>
      */
@@ -313,7 +328,7 @@ public class DatabaseManager {
 
     /**
      * getPetsFromDatabase is a function that will read the data from the database
-     * and get all of the pets data to return
+     * and get all of the pets data to return.
      * 
      * @return ArrayList<Pets>
      */
@@ -347,6 +362,12 @@ public class DatabaseManager {
         return pets;
     }
 
+    /**
+     * getEmployeeSchedule will return an 2D Array of a week of employees working.
+     * 
+     * @param week Integer Week number to return.
+     * @return ArrayList<ArrayList<Employee>>
+     */
     public static ArrayList<ArrayList<Employee>> getEmployeeSchedule(int week) {
         ArrayList<ArrayList<Employee>> employeeList = new ArrayList<ArrayList<Employee>>();
         for (int i = 0; i < 7; i++) {
@@ -376,7 +397,7 @@ public class DatabaseManager {
     }
 
     /**
-     * updateEmployee will update a employee record in the database
+     * updateEmployee will update a employee record in the database.
      * 
      * @param employee Employee to be updated.
      */
@@ -411,7 +432,7 @@ public class DatabaseManager {
     }
 
     /**
-     * updateCustomer will update a customer record in the database
+     * updateCustomer will update a customer record in the database.
      * 
      * @param customer Customer to be updated.
      */
@@ -440,7 +461,7 @@ public class DatabaseManager {
     }
 
     /**
-     * updatePet will update a Pet record in the database
+     * updatePet will update a Pet record in the database.
      * 
      * @param pet Pet to be updated.
      */
@@ -475,6 +496,8 @@ public class DatabaseManager {
     }
 
     /**
+     * removeEmployee will remove an employee from the database from a given EID.
+     * 
      * @param EID Integer EmployeeID of employee to be removed.
      */
     public static void removeEmployee(int EID) {
@@ -494,6 +517,8 @@ public class DatabaseManager {
     }
 
     /**
+     * removeCustomer will remove a customer from the database from a given CID.
+     * 
      * @param CID Integer CID of customer to be removed.
      */
     public static void removeCustomer(int CID) {
@@ -513,6 +538,8 @@ public class DatabaseManager {
     }
 
     /**
+     * removePet will remove a Pet from the database from a given PID.
+     * 
      * @param PID Integer of Pet to be removed.
      */
     public static void removePet(int PID) {
@@ -531,6 +558,9 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * deleteWeek will delete everything from the schedule database.
+     */
     public static void deleteWeek() {
         try {
             String prepareStatement = "DELETE FROM Schedule";

@@ -324,7 +324,7 @@ public class vetView extends javax.swing.JFrame {
                         public void run() {
                                 EmployeeManager em = new EmployeeManager();
                                 Scheduler scheduler = new Scheduler();
-                                ArrayList<ArrayList<Employee>> employees = scheduler.PopulateWeek(em.getEmployees());
+                                ArrayList<ArrayList<Employee>> employees = scheduler.populateWeek(em.getEmployees());
                                 DatabaseManager.deleteWeek();
                                 DatabaseManager.addWeek(employees, 0);
 
@@ -335,7 +335,7 @@ public class vetView extends javax.swing.JFrame {
                                         }
                                 }
 
-                                employees = scheduler.PopulateWeek(em.getEmployees());
+                                employees = scheduler.populateWeek(em.getEmployees());
                                 DatabaseManager.addWeek(employees, 1);
 
                                 for (int i = 0; i < employees.size(); i++) {
@@ -345,7 +345,7 @@ public class vetView extends javax.swing.JFrame {
                                         }
                                 }
 
-                                employees = scheduler.PopulateWeek(em.getEmployees());
+                                employees = scheduler.populateWeek(em.getEmployees());
                                 DatabaseManager.addWeek(employees, 2);
 
                                 for (int i = 0; i < employees.size(); i++) {
